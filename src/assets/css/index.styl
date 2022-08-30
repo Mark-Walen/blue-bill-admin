@@ -1,0 +1,80 @@
+*, *:before, *:after
+    box-sizing inherit
+    -webkit-tap-highlight-color transparent
+
+body
+    font-family: Roboto,-apple-system,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size 12px
+    line-height 1.5
+
+
+.flex, .row, .column
+    display flex
+    flex-wrap wrap
+
+.column
+    flex-direction column
+
+.justify-end
+    justify-content flex-end
+
+.justify-around
+    justify-content space-around
+
+.no-wrap
+    flex-wrap nowrap
+
+.justify-center, .flex-center
+    justify-content center
+
+.items-center, .flex-center
+    align-items center
+
+.no-border
+    border none
+
+.no-border-radius
+    border-radius 0 !important
+
+.no-shadow, .shadow-0
+    box-shadow none !important
+
+.bg-transparent
+    background transparent
+
+.el-card__body>div
+    border-left 0
+    border-right 0
+
+.text-center
+    text-align center
+
+.text-no-wrap
+    white-space nowrap
+
+.cursor-pointer
+    cursor pointer
+
+.my-md
+    margin-top 16px
+    margin-bottom 16px
+
+.text-primary
+    color var(--el-color-primary)
+
+.el-card.no-padding
+    --el-card-padding 0
+
+.bg-white
+    background #fff
+
+.gutter-y-sm, .gutter-sm
+    margin-top -8px
+    .el-card__body>*
+        margin-top 8px
+
+.el-card__body>img
+    display block
+    width 100%
+    max-width 100%
+    border 0

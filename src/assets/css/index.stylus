@@ -1,9 +1,0 @@
-.flex
-.row
-.column
-    display flex
-    flex-wrap wrap
-
-*, *:before, *:after
-    box-sizing inherit
-    -webkit-tap-highlight-color transparent
