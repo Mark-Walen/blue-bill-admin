@@ -5,7 +5,20 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        sm: '8px',
+        md: '16px',
+        lg: '24px',
+        xl: '48px',
+      },
+      width: {
+          'dialog-sm': '600px',
+      },
+      height: {
+        'dialog-sm': '400px'
+      }
+    },
   },
   plugins: [],
 }

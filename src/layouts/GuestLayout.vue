@@ -1,7 +1,7 @@
 <template>
     <el-row justify="center">
         <el-container direction="vertical">
-            <el-main class="flex window-height">
+            <el-main class="flex h-screen my-0">
                 <router-view />
             </el-main>
         </el-container>
@@ -15,10 +15,6 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus">
-.window-height
-    margin-top 0 !important
-    margin-bottom 0 !important
-    height 100vh !important
 
 .el-main
     --el-main-padding 0

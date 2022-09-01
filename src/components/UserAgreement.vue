@@ -1,5 +1,5 @@
 <template>
-    <el-card class="overflow-y-auto size-600-400">
+    <el-card class="p-2 overflow-y-auto sm:w-dialog-sm sm:h-dialog-sm">
         <bm-card class="indent-8">
             你方同意本协议的全部条款并按照乐牧科技牧场管理系统（以下简称“本系统”）
             页面上的提示完成全部的注册程序。本协议包括但不限于本协议和《隐私政策》以及其他各项规则、制度等。
@@ -218,15 +218,3 @@ export default defineComponent({
     }
 })
 </script>
-<style lang="styl" scoped>
-.size-600-400
-    width 600px
-    height 400px
-
-.text-indent-2em 
-    text-indent 2em
-
-.indent-12
-    text-indent 3em
-
-</style>

@@ -11,8 +11,8 @@ const routes = [
         ]
     },
     {
-        path: '/agree',
-        component: () => import('@/components/UserAgreement.vue'),
+        path: '/test',
+        component: () => import('@/components/PrivacyStatement.vue'),
         props: (route) => route.query
     }
 ]

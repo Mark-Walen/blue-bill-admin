@@ -1,10 +1,10 @@
 <template>
   <el-row class="fit justify-center flex-col bg-img" style="background-image: url('img/bg-loginpage-light-web.svg');">
-    <el-row class="bg-transparent justify-end">
-      <el-form class="flex flex-nowrap flex-col justify-around margin-10vw size-383-484 bg-white p-12 rounded"
+    <el-row class="lg:bg-transparent bg-white lg:p-0 p-xl lg:justify-end justify-center items-center h-full lg:h-auto">
+      <el-form class="lg:flex lg:flex-nowrap lg:flex-col lg:justify-around lg:mr-[10vw] mr-0 form-media bg-white rounded"
         :rules="rules"
       >
-        <el-form-item class="column flex-col p-0 border-none items-center gutter-y-sm gutter-sm">
+        <el-form-item class="column flex-col p-0 lg:items-center items-start gutter-y-sm gutter-sm">
           <img src="img/logo-blue-loginpage-web.svg" alt="蓝芒记账本" style="width: 50px;" />
           <span>蓝芒记账，累积每一滴汗水</span>
         </el-form-item>
@@ -88,14 +88,22 @@ export default defineComponent({
   width 100% !important
   height 100% !important
 
-.size-383-484
-  width 383px
-  height 484px
+
+.form-media
+  width 100%
+  height 80%
+  margin-left 0
+  padding 16px
+  @media screen and (min-width: 1024px)
+    width 383px
+    height 484px
+    padding 48px
 
 
 .size-300-35
-  width 300px
-  height 35px
+  @media screen and (min-width: 1024px)
+    width 300px
+    height 35px
 
 .bg-img
   background-repeat no-repeat
@@ -104,5 +112,12 @@ export default defineComponent({
 
 .margin-10vw
   margin-right 10vw
+
+
+.el-form-item >>> .el-form-item__content
+  flex-direction column
+  align-items flex-start
+  @media screen and (min-width: 1024px)
+    aligin-items center
 
 </style>
