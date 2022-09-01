@@ -1,12 +1,14 @@
 <template>
-  <el-card class="fit flex justify-center no-border-radius column bg-img no-border no-padding" shadow="never" style="background-image: url('img/bg-loginpage-light-web.svg');">
-    <el-card class="no-border-radius bg-transparent no-border no-padding flex row justify-end" shadow="never">
-      <el-form class="no-wrap column justify-around margin-10vw size-383-484 bg-white pd-48 br-4">
-        <el-card class="column no-padding no-border items-center gutter-y-sm, gutter-sm" shadow="never" :body-style="logoCardStyle">
-          <img src="img/logo-blue-loginpage-web.svg" alt="蓝芒金融" style="width: 50px;"/>
+  <el-row class="fit justify-center flex-col bg-img" style="background-image: url('img/bg-loginpage-light-web.svg');">
+    <el-row class="bg-transparent justify-end">
+      <el-form class="flex flex-nowrap flex-col justify-around margin-10vw size-383-484 bg-white p-12 rounded"
+        :rules="rules"
+      >
+        <el-form-item class="column flex-col p-0 border-none items-center gutter-y-sm gutter-sm">
+          <img src="img/logo-blue-loginpage-web.svg" alt="蓝芒记账本" style="width: 50px;" />
           <span>蓝芒记账，累积每一滴汗水</span>
-        </el-card>
-        <el-form-item>
+        </el-form-item>
+        <el-form-item prop="username">
           <el-input
               v-model="username"
               clearable
@@ -20,7 +22,7 @@
               autocomplete="off"
               show-password />
         </el-form-item>
-        <el-card shadow="never" class="text-center no-border-radius no-border no-padding">
+        <el-col class="text-center flex-none">
           <el-checkbox v-model="isRead" size="large"/>已阅读并同意
           <span class="text-primary cursor-pointer" @click="toUserAgreement">用户协议</span>
           和
@@ -28,14 +30,15 @@
           <el-card class="flex flex-center no-border no-padding text-no-wrap my-md" shadow="never">
             <el-button type="primary" :disabled="!isRead" :loading="submitting" style="padding: 20px 100px" round>登录</el-button>
           </el-card>
-        </el-card>
+        </el-col>
       </el-form>
-    </el-card>
-  </el-card>
+    </el-row>
+  </el-row>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
+// import UserAgreement from 'components/UserAgreement.vue'
 
 export default defineComponent({
   name: 'SignIn',
@@ -44,8 +47,15 @@ export default defineComponent({
     const username = ref('')
     const password = ref('')
     const submitting = ref(false)
-    const logoCardStyle = ref({
-      display: 'contents'
+
+    const ruleFormRef = ref('')
+    const rules = reactive({
+      username: [
+        { required: true, message: '用户名必填', trigger: 'blur' }
+      ],
+      passwd: [
+        { required: true, message: '密码必填', trigger: 'blur' }
+      ]
     })
 
 
@@ -64,7 +74,8 @@ export default defineComponent({
       username,
       password,
       submitting,
-      logoCardStyle,
+      ruleFormRef,
+      rules,
 
       toUserAgreement,
       toPrivacyStatement
@@ -72,7 +83,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="stylus" scoped>
+<style lang="styl" scoped>
 .fit
   width 100% !important
   height 100% !important
@@ -80,6 +91,11 @@ export default defineComponent({
 .size-383-484
   width 383px
   height 484px
+
+
+.size-300-35
+  width 300px
+  height 35px
 
 .bg-img
   background-repeat no-repeat
@@ -89,9 +105,4 @@ export default defineComponent({
 .margin-10vw
   margin-right 10vw
 
-.pd-48
-  padding 48px
-
-.br-4
-  border-radius 4px
 </style>

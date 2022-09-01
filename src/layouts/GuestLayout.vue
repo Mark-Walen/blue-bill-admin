@@ -1,5 +1,5 @@
 <template>
-    <el-row>
+    <el-row justify="center">
         <el-container direction="vertical">
             <el-main class="flex window-height">
                 <router-view />

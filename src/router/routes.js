@@ -9,6 +9,11 @@ const routes = [
                 component: () => import('@/views/SignIn.vue')
             }
         ]
+    },
+    {
+        path: '/agree',
+        component: () => import('@/components/UserAgreement.vue'),
+        props: (route) => route.query
     }
 ]
 export default routes

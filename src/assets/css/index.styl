@@ -12,22 +12,8 @@ body
     display flex
     flex-wrap wrap
 
-.column
-    flex-direction column
-
-.justify-end
-    justify-content flex-end
-
-.justify-around
-    justify-content space-around
-
-.no-wrap
-    flex-wrap nowrap
-
-.justify-center, .flex-center
+.flex-center
     justify-content center
-
-.items-center, .flex-center
     align-items center
 
 .no-border
@@ -42,12 +28,9 @@ body
 .bg-transparent
     background transparent
 
-.el-card__body>div
+.el-col>div
     border-left 0
     border-right 0
-
-.text-center
-    text-align center
 
 .text-no-wrap
     white-space nowrap
@@ -62,18 +45,11 @@ body
 .text-primary
     color var(--el-color-primary)
 
-.el-card.no-padding
-    --el-card-padding 0
-
-.bg-white
-    background #fff
-
 .gutter-y-sm, .gutter-sm
-    margin-top -8px
     .el-card__body>*
         margin-top 8px
 
-.el-card__body>img
+.el-col>img
     display block
     width 100%
     max-width 100%
