@@ -1,5 +1,5 @@
 <template>
-    <el-card class="p-2 overflow-y-auto sm:w-dialog-sm sm:h-dialog-sm">
+    <el-card class="p-md overflow-y-auto lg:w-dialog-sm lg:h-dialog-sm col">
         <bm-card class="indent-8">
             你方同意本协议的全部条款并按照乐牧科技牧场管理系统（以下简称“本系统”）
             页面上的提示完成全部的注册程序。本协议包括但不限于本协议和《隐私政策》以及其他各项规则、制度等。
@@ -210,7 +210,8 @@
 </template>
 <script>
 import { defineComponent } from 'vue'
-import BmCard from './BMCard.vue'
+import BmCard from './BmCard.vue'
+
 export default defineComponent({
     name: 'UserAgreement',
     components: {

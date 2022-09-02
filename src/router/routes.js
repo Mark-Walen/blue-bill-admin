@@ -12,7 +12,7 @@ const routes = [
     },
     {
         path: '/test',
-        component: () => import('@/components/PrivacyStatement.vue'),
+        component: () => import('@/components/DynamicDialogWrapper'),
         props: (route) => route.query
     }
 ]

@@ -1,7 +1,7 @@
 <template>
-  <bm-card class="sm:w-dialog-sm sm:h-dialog-sm overflow-y-auto size-600-400">
+  <bm-card class="lg:w-dialog-sm lg:h-dialog-sm overflow-y-auto p-md col">
     <bm-card class="indent-3">
-      蓝芒及其关联公司（合称为“我们”）致力于保护及尊重您的隐私。本隐私政策声明仅适用于位于中华人民共和国境内（不含香港特别行政区、澳门特别行政区、台湾地区）且年满18周岁的
+      蓝芒科技及其关联公司（合称为“我们”）致力于保护及尊重您的隐私。本隐私政策声明仅适用于位于中华人民共和国境内（不含香港特别行政区、澳门特别行政区、台湾地区）且年满18周岁的
       用户。本隐私政策载列了我们处理您向我们提供的任何个人信息，请仔细阅读以下内容，以便了解我们将如何处理您的个人信息。您向我们提供个人信息或对本隐私政策勾选同意，即表示您承认及
       认可本隐私政策所述的条款。
     </bm-card>
@@ -142,7 +142,7 @@
 
     <bm-card class="indent-4">
       6.1为向您提供更好的服务以及随着门户网站的不断发展与变化，我们可能会适时对本政策进行修订。当本政策的条款发生变更时，我们会在版本更新时以 红点提示、网站公告等方式对您进
-      行提示，并说明生效日期。我们提请您经常进行核查，以查看本政策的任何更新或变动。 本政策是乐牧服务协议和隐私平台政策的重要组成部分。 如果您对本隐私政策或个人信息保护相关事宜有
+      行提示，并说明生效日期。我们提醒您经常进行核查，以查看本政策的任何更新或变动。 本政策是乐牧服务协议和隐私平台政策的重要组成部分。 如果您对本隐私政策或个人信息保护相关事宜有
       任何疑问或投诉、建议时，您可以通过以下方式与我们联系：
     </bm-card>
     <bm-card class="indent-4">
@@ -159,7 +159,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import BmCard from './BMCard.vue'
+import BmCard from './BmCard.vue'
 export default defineComponent({
   name: 'PrivacyStatement',
   components: {

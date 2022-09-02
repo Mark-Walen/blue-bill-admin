@@ -12,9 +12,9 @@
 </template>
 <script setup>
 const props = defineProps({
-    comp: { type: Object },
-    compProps: { type: Object },
-    options: { type: Object }
+  comp: Object,
+  compProps: Object,
+  options: Object
 })
 
 const done = async (data) => {
