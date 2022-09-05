@@ -3,28 +3,31 @@
     <el-row class="lg:bg-transparent bg-white lg:p-0 p-xl lg:justify-end justify-center items-center h-full lg:h-auto">
       <!-- TODO Add Form Input Field Validator -->
       <el-form
-        class="lg:flex lg:flex-nowrap lg:flex-col lg:justify-around lg:mr-[10vw] mr-0 form-media bg-white rounded"
-        ref="loginFormRef"
-        :model="loginForm"
-        @submit.prevent="simulateSubmit"
-        :rules="rules">
+          class="lg:flex lg:flex-nowrap lg:flex-col lg:justify-around lg:mr-[10vw] mr-0 form-media bg-white rounded"
+          ref="loginFormRef"
+          :model="loginForm"
+          @submit.prevent="simulateSubmit"
+          :rules="rules"
+          status-icon>
         <el-form-item class="column flex-col p-0 lg:items-center items-start gutter-y-sm gutter-sm">
-          <img src="img/logo-blue-loginpage-web.svg" alt="蓝芒记账本" style="width: 50px;" />
+          <img src="img/logo-blue-loginpage-web.svg" alt="蓝芒记账本" style="width: 50px;"/>
           <span>蓝芒记账，累积每一滴汗水</span>
         </el-form-item>
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" clearable placeholder="请输入用户名" />
+          <el-input v-model="loginForm.username" clearable placeholder="请输入用户名"/>
         </el-form-item>
-        <el-form-item prop="passwd">
-          <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" autocomplete="off" show-password />
+        <el-form-item prop="password">
+          <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" autocomplete="off" show-password/>
         </el-form-item>
         <el-col class="text-center flex-none">
-          <el-checkbox v-model="isRead" size="large" />已阅读并同意
+          <el-checkbox v-model="isRead" size="large"/>
+          已阅读并同意
           <span class="text-primary cursor-pointer" @click="toUserAgreement">用户协议</span>
           和
           <span class="text-primary cursor-pointer" @click="toPrivacyStatement">隐私声明</span>
           <bm-card class="flex flex-center no-border no-padding text-no-wrap my-md" shadow="never">
-            <el-button class="bg-current" native-type="submit" type="primary" :disabled="!isRead" :loading="submitting" @click="" style="padding: 20px 100px" round>登录
+            <el-button class="bg-current" native-type="submit" type="primary" :disabled="!isRead" :loading="submitting"
+                       style="padding: 20px 100px" round>登录
             </el-button>
           </bm-card>
         </el-col>
@@ -32,10 +35,12 @@
     </el-row>
   </el-row>
 </template>
-<script>
-import { defineComponent, reactive, ref, h } from 'vue'
-import BmCard from '@/components/BmCard.vue'
+<script lang="ts">
+import { defineComponent, reactive, ref } from 'vue'
+import { useRouter } from "vue-router";
+import BmCard from 'src/components/BmCard.vue'
 import { ElNotification } from 'element-plus'
+import { userSessionStore } from "/@/store/session-store";
 // import UserAgreement from 'components/UserAgreement.vue'
 
 export default defineComponent({
@@ -48,6 +53,8 @@ export default defineComponent({
     const username = ref('')
     const password = ref('')
     const submitting = ref(false)
+    const router = useRouter()
+    const store = userSessionStore()
 
     const loginFormRef = ref('')
     const loginForm = reactive({
@@ -58,10 +65,17 @@ export default defineComponent({
       username: [
         { required: true, message: '用户名必填', trigger: 'blur' }
       ],
-      passwd: [
+      password: [
         { required: true, message: '密码必填', trigger: 'blur' }
       ]
     })
+    const ruoter = useRouter()
+
+    const checkUsername = (rule: any, value: any, callback: any) => {
+      if (!value) {
+        callback(new Error('请输入'))
+      }
+    }
 
     const simulateSubmit = async () => {
       if (isRead.value !== true) {
@@ -71,10 +85,12 @@ export default defineComponent({
           position: 'top-right'
         })
       } else {
+        // TODO add waiting for local form field validator
         submitting.value = true
-        const res = await store.login(name.value, password.value)
+        const res = await store.Login(loginForm.username, loginForm.password)
         if (res) {
-          router.replace('/work')
+          // eslint-disable-next-line
+          router.replace('/bill-system')
         } else {
           ElNotification({
             type: 'warning',
@@ -84,7 +100,6 @@ export default defineComponent({
         submitting.value = false
       }
     }
-
 
     const toUserAgreement = () => {
       // TODO 实现用户协议 UI

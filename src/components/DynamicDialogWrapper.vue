@@ -1,6 +1,6 @@
 <template>
     <el-dialog ref="dialogRef" @close="onDialogHide">
-        <template #header="{ close, titleId, titleClass }">
+        <template #header="{ close }">
             <div class="dialog-header">
                 <span class="text-bold text-caption">{{ props.options && props.options.title }}</span>
                 <div class="space"></div>
