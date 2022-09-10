@@ -1,66 +1,69 @@
 <template>
-  <el-row class="fit justify-center flex-col bg-img" style="background-image: url('img/bg-loginpage-light-web.svg');">
-    <el-row class="lg:bg-transparent bg-white lg:p-0 p-xl lg:justify-end justify-center items-center h-full lg:h-auto">
-      <!-- TODO Add Form Input Field Validator -->
-      <el-form
-          class="lg:flex lg:flex-nowrap lg:flex-col lg:justify-around lg:mr-[10vw] mr-0 form-media bg-white rounded"
-          ref="loginFormRef"
-          :model="loginForm"
-          @submit.prevent="simulateSubmit"
-          :rules="rules"
-          status-icon>
-        <el-form-item class="column flex-col p-0 lg:items-center items-start gutter-y-sm gutter-sm">
-          <img src="img/logo-blue-loginpage-web.svg" alt="蓝芒记账本" style="width: 50px;"/>
+  <el-row class="fit login-wrapper bg-img" style="background-image: url('img/login-bg.png')">
+    <el-row class="flex" :class="{
+      'row': true,
+      'justify-end bg-transparent	': screen.sm,
+      'justify-center items-center h-screen p-xl bg-white': !screen.sm
+    }">
+      <el-form @submit.prevent="false"
+               :class="{
+                'bg-white rounded': true,
+                'column justify-around mr-[10vw] size-383-484 p-xl': screen.sm,
+                'full-screen from q-gutter-y-md p-md': !screen.sm
+              }
+              "
+               :ref="loginFormRef"
+               :model="loginForm" :rules="rules">
+        <el-row :class="{
+          'column q-gutter-y-sm': true,
+          'items-center': screen.sm,
+          'items-start': screen.sm
+        }">
+          <img src="img/apple-touch-icon.png" alt="蓝芒记账本" style="width: 64px;"/>
           <span>蓝芒记账，累积每一滴汗水</span>
-        </el-form-item>
-        <el-form-item prop="username">
+        </el-row>
+        <el-form-item class="form-control" prop="username">
           <el-input v-model="loginForm.username" clearable placeholder="请输入用户名"/>
         </el-form-item>
-        <el-form-item prop="password">
+        <el-form-item class="form-control" prop="password">
           <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" autocomplete="off" show-password/>
         </el-form-item>
-        <el-col class="text-center flex-none">
-          <el-checkbox v-model="isRead" size="large"/>
+        <el-col class="text-center" style="flex: none;">
+          <el-checkbox v-model="isRead" size="24px" style="vertical-align: middle;"/>
           已阅读并同意
           <span class="text-primary cursor-pointer" @click="toUserAgreement">用户协议</span>
           和
           <span class="text-primary cursor-pointer" @click="toPrivacyStatement">隐私声明</span>
-          <bm-card class="flex flex-center no-border no-padding text-no-wrap my-md" shadow="never">
-            <el-button class="bg-current" native-type="submit" type="primary" :disabled="!isRead" :loading="submitting"
-                       style="padding: 20px 100px" round>登录
-            </el-button>
+          <bm-card class="flex flex-center justify-center text-no-wrap my-md" shadow="never">
+            <el-button native-type="submit" type="primary" :disabled="!isRead" :loading="submitting"
+                       style="padding: 20px 100px" round>登录</el-button>
           </bm-card>
         </el-col>
       </el-form>
     </el-row>
   </el-row>
 </template>
-<script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
-import { useRouter } from "vue-router";
-import BmCard from 'src/components/BmCard.vue'
-import { ElNotification } from 'element-plus'
-import { userSessionStore } from "/@/store/session-store";
-// import UserAgreement from 'components/UserAgreement.vue'
+
+<script>
+import {defineComponent, reactive, ref} from "vue";
+import BmCard from "../components/BmCard.vue";
+import {useScreenStore} from "../stores/screen";
 
 export default defineComponent({
-  name: 'SignIn',
+  name: "SignIn",
   components: {
     BmCard
   },
-  setup() {
+  setup () {
+    const screen = useScreenStore()
     const isRead = ref(false)
-    const username = ref('')
-    const password = ref('')
     const submitting = ref(false)
-    const router = useRouter()
-    const store = userSessionStore()
-
     const loginFormRef = ref('')
     const loginForm = reactive({
       username: '',
       password: ''
     })
+
     const rules = reactive({
       username: [
         { required: true, message: '用户名必填', trigger: 'blur' }
@@ -69,99 +72,83 @@ export default defineComponent({
         { required: true, message: '密码必填', trigger: 'blur' }
       ]
     })
-    const ruoter = useRouter()
-
-    const checkUsername = (rule: any, value: any, callback: any) => {
-      if (!value) {
-        callback(new Error('请输入'))
-      }
-    }
-
-    const simulateSubmit = async () => {
-      if (isRead.value !== true) {
-        ElNotification({
-          type: 'warning',
-          message: '你必须同意用户协议和隐私声明！',
-          position: 'top-right'
-        })
-      } else {
-        // TODO add waiting for local form field validator
-        submitting.value = true
-        const res = await store.Login(loginForm.username, loginForm.password)
-        if (res) {
-          // eslint-disable-next-line
-          router.replace('/bill-system')
-        } else {
-          ElNotification({
-            type: 'warning',
-            message: '登录失败'
-          })
-        }
-        submitting.value = false
-      }
-    }
 
     const toUserAgreement = () => {
       // TODO 实现用户协议 UI
       console.log("用户协议")
     }
-
     const toPrivacyStatement = () => {
       // TODO 实现隐私声明 UI
       console.log("隐私声明")
     }
 
     return {
+      screen,
       isRead,
-      username,
-      password,
       submitting,
       loginFormRef,
       loginForm,
       rules,
 
-      simulateSubmit,
       toUserAgreement,
       toPrivacyStatement
     }
   }
 })
 </script>
-<style lang="styl" scoped>
-.fit
-  width 100% !important
-  height 100% !important
 
+<style scoped>
+.fit {
+  width: 100%;
+  height: 100%;
+}
 
-.form-media
-  width 100%
-  height 80%
-  margin-left 0
-  padding 16px
-  @media screen and (min-width: 1024px)
-    width 383px
-    height 484px
-    padding 48px
+.bg-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
+.size-383-484 {
+  width: 383px;
+  height: 484px;
+}
 
-.size-300-35
-  @media screen and (min-width: 1024px)
-    width 300px
-    height 35px
+.from {
+  width: 80%;
+  height: 80%;
+}
 
-.bg-img
-  background-repeat no-repeat
-  background-size cover
-  background-position center
+.full-screen {
+  width: 100%;
+}
 
-.margin-10vw
-  margin-right 10vw
+.size-190-30 {
+  width: 300px;
+  height: 35px;
+}
 
+:deep(.el-checkbox__inner) {
+  width: 24px;
+  height: 24px;
+}
 
-:deep(.el-form-item .el-form-item__content)
-  flex-direction column
-  align-items flex-start
-  @media screen and (min-width: 1024px)
-    align-items center
+:deep(.el-checkbox__inner:after) {
+  border: 3px solid #fff;
+  border-left: 0;
+  border-top: 0;
+  left: 8px;
+  top: 3px;
+  height: 10px;
+  width: 5px;
+}
 
+:deep(.el-checkbox__input.is-checked .el-checkbox__inner::after) {
+  transform: rotate(45deg) scaleY(1.3);
+}
+
+.el-input {
+  height: 42px;
+  font-size: 14px;
+}
 </style>

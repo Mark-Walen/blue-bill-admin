@@ -3,6 +3,7 @@ const routes = [
         path: '/',
         component: () => import('@/layouts/GuestLayout.vue'),
         props: (route) => route.query,
+        redirect: '/login',
         children: [
             {
                 path: 'login',
@@ -12,8 +13,7 @@ const routes = [
     },
     {
         path: '/test',
-        component: () => import('@/components/DynamicDialogWrapper'),
-        props: (route) => route.query
     }
 ]
+
 export default routes

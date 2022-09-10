@@ -1,0 +1,43 @@
+@import "base.css";
+
+html, body, #app {
+  width: 100%;
+  direction: ltr;
+  margin: 0;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.login-wrapper {
+  justify-content: center;
+  flex-direction: column;
+}
+
+.row, .column, .flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.q-gutter-y-md, .q-gutter-md {
+  margin-top: -16px;
+}
+
+.q-gutter-y-md>*, .q-gutter-md>* {
+  margin-top: 16px;
+}
+
+.q-gutter-y-sm, .q-gutter-sm {
+  margin-top: -8px;
+}
+
+.q-gutter-y-sm>*, .q-gutter-sm>* {
+  margin-top: 8px;
+}
+
