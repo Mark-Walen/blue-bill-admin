@@ -13,7 +13,14 @@ const routes = [
     },
     {
         path: '/test',
-    }
+        component: () => import('../components/DynamicDialogWrapper.vue')
+    },
+    {
+        path: '/mobile-dialog',
+        name: 'mobile-dialog',
+        props: true,
+        component: () => import('../layouts/DynamicDialogLayout.vue')
+    },
 ]
 
 export default routes

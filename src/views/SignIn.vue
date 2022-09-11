@@ -22,14 +22,15 @@
           <img src="img/apple-touch-icon.png" alt="蓝芒记账本" style="width: 64px;"/>
           <span>蓝芒记账，累积每一滴汗水</span>
         </el-row>
-        <el-form-item class="form-control" prop="username">
+        <el-form-item :class="{'mb': !screen.sm}" prop="username">
           <el-input v-model="loginForm.username" clearable placeholder="请输入用户名"/>
         </el-form-item>
-        <el-form-item class="form-control" prop="password">
+        <!-- TODO Remember to set md to 32px on mobile devices -->
+        <el-form-item :class="{'mb': !screen.sm}" prop="password">
           <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" autocomplete="off" show-password/>
         </el-form-item>
         <el-col class="text-center" style="flex: none;">
-          <el-checkbox v-model="isRead" size="24px" style="vertical-align: middle;"/>
+          <el-checkbox v-model="isRead" size="large" style="vertical-align: middle;"/>
           已阅读并同意
           <span class="text-primary cursor-pointer" @click="toUserAgreement">用户协议</span>
           和
@@ -45,9 +46,12 @@
 </template>
 
 <script>
-import {defineComponent, reactive, ref} from "vue";
+import {defineComponent, markRaw, reactive, ref} from "vue";
 import BmCard from "../components/BmCard.vue";
 import {useScreenStore} from "../stores/screen";
+import {useResponsiveDialog} from "../utils/dom";
+import PrivacyStatement from "../components/login/PrivacyStatement.vue";
+import UserAgreement from "../components/login/UserAgreement.vue";
 
 export default defineComponent({
   name: "SignIn",
@@ -73,13 +77,21 @@ export default defineComponent({
       ]
     })
 
+    const privacyStatementUi = useResponsiveDialog(markRaw(PrivacyStatement))
+    const userAgreementUi = useResponsiveDialog(markRaw(UserAgreement))
     const toUserAgreement = () => {
       // TODO 实现用户协议 UI
       console.log("用户协议")
+      userAgreementUi.show({}, {
+        title: '用户协议'
+      }, screen)
     }
     const toPrivacyStatement = () => {
       // TODO 实现隐私声明 UI
       console.log("隐私声明")
+      privacyStatementUi.show({}, {
+        title: '隐私声明'
+      }, screen)
     }
 
     return {
@@ -150,5 +162,18 @@ export default defineComponent({
 .el-input {
   height: 42px;
   font-size: 14px;
+}
+
+.mb {
+  margin-bottom: 28px;
+}
+
+.text-primary {
+  color: var(--el-color-primary);
+}
+
+/* Finished submit button bg error caused by tailwindcss, but there still remain a bug I do not know*/
+button[type=submit]:not(.is-disabled) {
+  background-color: var(--el-button-bg-color);
 }
 </style>

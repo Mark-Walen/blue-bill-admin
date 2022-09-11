@@ -1,7 +1,17 @@
+:root {
+    --bm-toolbar-min-height: 50px;
+    --bm-toolbar-padding: 0 12px;
+    --bm-toolbar-inset-size: 58px;
+    --bm-toolbar-title-font-size: 21px;
+    --bm-toolbar-title-font-weight: normal;
+    --bm-toolbar-title-letter-spacing: .01em;
+    --bm-toolbar-title-padding: 0 12px;
+}
+
 body {
     min-width: 100px;
     min-height: 100%;
-    font-family: Roboto,-apple-system,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Roboto, -apple-system, Helvetica Neue, Helvetica, Arial, sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
