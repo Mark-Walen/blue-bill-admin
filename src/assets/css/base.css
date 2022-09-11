@@ -8,6 +8,28 @@
     --bm-toolbar-title-padding: 0 12px;
 }
 
+:root {
+    --bm-shadow-color: #000;
+    --bm-shadow-transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+    --bm-inset-shadow: 0 7px 9px -7px rgba(var(--bm-shadow-color), .7) inset;
+    --bm-inset-shadow-down: 0 -7px 9px -7px rgba(var(--bm-shadow-color), .7) inset;
+
+    --bm-elevation-umbra: rgba(var(--bm-shadow-color), .2);
+    --bm-elevation-penumbra: rgba(var(--bm-shadow-color), .14);
+    --bm-elevation-ambient: rgba(var(--bm-shadow-color), .12);
+
+    --bm-shadow-2: 0 1px 5px var(--bm-elevation-umbra), 0 2px 2px var(--bm-elevation-penumbra), 0 3px 1px -2px var(--bm-elevation-ambient);
+}
+
+:root {
+    --bm-separator-color: rgba(0, 0, 0, 0.4);
+    --bm-separator-dark-color: rgba(255, 255, 255, .28);
+}
+
+:root {
+    --bm-generic-border-radius: 4px;
+}
+
 body {
     min-width: 100px;
     min-height: 100%;
