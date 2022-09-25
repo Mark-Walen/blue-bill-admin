@@ -2,22 +2,22 @@
   <el-row class="fit login-wrapper bg-img" style="background-image: url('img/login-bg.png')">
     <el-row class="flex" :class="{
       'row': true,
-      'justify-end bg-transparent	': screen.sm,
-      'justify-center items-center h-screen p-xl bg-white': !screen.sm
+      'justify-end bg-transparent	': $bm.screen.gt.sm,
+      'justify-center items-center h-screen p-xl bg-white': !$bm.screen.gt.sm
     }">
       <el-form @submit.prevent="false"
                :class="{
                 'bg-white rounded': true,
-                'column justify-around mr-[10vw] size-383-484 p-xl': screen.sm,
-                'full-screen from q-gutter-y-md p-md': !screen.sm
+                'column justify-around mr-[10vw] size-383-484 p-xl': $bm.screen.gt.sm,
+                'full-screen from q-gutter-y-md p-md': !$bm.screen.gt.sm
               }
               "
                :ref="loginFormRef"
                :model="loginForm" :rules="rules">
         <el-row :class="{
           'column q-gutter-y-sm': true,
-          'items-center': screen.sm,
-          'items-start': screen.sm
+          'items-center': $bm.screen.gt.sm,
+          'items-start': !$bm.screen.gt.sm
         }">
           <img src="img/apple-touch-icon.png" alt="蓝芒记账本" style="width: 64px;"/>
           <span>蓝芒记账，累积每一滴汗水</span>
