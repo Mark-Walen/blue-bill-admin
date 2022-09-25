@@ -1,8 +1,8 @@
 <template>
   <el-card :class="{
     'p-md scroll-y-auto': true,
-    'size-600-400': screen.sm,
-    'col': !screen.sm
+    'size-600-400': $bm.screen.gt.sm,
+    'col': !$bm.screen.gt.sm
   }">
     <bm-card class="indent-8">
       你方同意本协议的全部条款并按照蓝芒记账管理系统（以下简称“本系统”）
@@ -221,13 +221,6 @@ export default defineComponent({
   name: 'UserAgreement',
   components: {
     BmCard
-  },
-  setup () {
-    const screen = useScreenStore()
-
-    return {
-      screen
-    }
   }
 })
 </script>

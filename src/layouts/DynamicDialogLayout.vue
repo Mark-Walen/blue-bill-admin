@@ -8,7 +8,7 @@
   </bm-card>
 </template>
 <script>
-import BmCard from "../components/BmCard.vue";
+import BmCard from "../components/card/BmCard";
 import BmToolBarWithGoBack from "../components/toolbar/BmToolbarWithGoBack.vue";
 import {defineComponent, onMounted, ref, watch} from "vue";
 import {onBeforeRouteLeave, useRoute, useRouter} from "vue-router/dist/vue-router";

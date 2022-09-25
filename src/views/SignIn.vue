@@ -35,7 +35,7 @@
           <span class="text-primary cursor-pointer" @click="toUserAgreement">用户协议</span>
           和
           <span class="text-primary cursor-pointer" @click="toPrivacyStatement">隐私声明</span>
-          <bm-card class="flex flex-center justify-center text-no-wrap my-md" shadow="never">
+          <bm-card class="flex flex-center justify-center text-no-wrap my-md">
             <el-button native-type="submit" type="primary" :disabled="!isRead" :loading="submitting"
                        style="padding: 20px 100px" round>登录</el-button>
           </bm-card>
@@ -47,7 +47,7 @@
 
 <script>
 import {defineComponent, markRaw, reactive, ref} from "vue";
-import BmCard from "../components/BmCard.vue";
+import BmCard from "../components/card/BmCard";
 import {useScreenStore} from "../stores/screen";
 import {useResponsiveDialog} from "../utils/dom";
 import PrivacyStatement from "../components/login/PrivacyStatement.vue";

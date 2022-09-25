@@ -1,8 +1,7 @@
-import {useRouter} from "vue-router/dist/vue-router";
-import DynamicDialogWrapper from '../components/DynamicDialogWrapper.vue'
-import {ElCard, ElButton, ElDialog} from "element-plus";
-import {createApp, h} from "vue";
-import {createPinia} from "pinia";
+import {useRouter} from "vue-router/dist/vue-router"
+import DynamicDialogWrapper from '../components/dialog/DynamicDialogWrapper.vue'
+import Screen from "../plugin/Screen"
+import Dialog from "../plugin/Dialog";
 
 const _g = { routePathId: 0}
 
@@ -28,26 +27,13 @@ export const findContext = (routeId) => contexts.find(context => Number(context[
 
 export const useResponsiveDialog = (comp) => {
     const router = useRouter()
-    const tempPinia = createPinia()
-    const show = (props, options, store) => {
-      if (!store.hasOwnProperty('sm')) {
-          return
-      }
-      if (store.sm) {
-          // console.log(store.sm)
-          let app = createApp({
-              name: 'BmDynamicDialog',
-              setup: () => () => h(DynamicDialogWrapper, {
-                  comp,
-                  compProps: props,
-                  options
-              })
+    const show = (props, options) => {
+      if (Screen.gt.sm) {
+          console.log(Dialog)
+          Dialog.create({
+              component: DynamicDialogWrapper,
+              componentProps: { comp, compProps: props, options}
           })
-          app.use(tempPinia).use(ElCard).use(ElButton).use(ElDialog)
-          const el = document.createElement('div')
-          const target = document.body
-          target.appendChild(el)
-          app.mount(el)
       } else {
           if (!dialogTemporary.firstSource) {
               dialogTemporary.firstSource = router.currentRoute.value.fullPath

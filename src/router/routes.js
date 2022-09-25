@@ -13,7 +13,7 @@ const routes = [
     },
     {
         path: '/test',
-        component: () => import('../components/DynamicDialogWrapper.vue')
+        component: () => import('../components/dialog/DynamicDialogWrapper.vue')
     },
     {
         path: '/mobile-dialog',

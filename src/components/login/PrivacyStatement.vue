@@ -1,8 +1,8 @@
 <template>
   <bm-card :class="{
     'scroll-y-auto p-md': true,
-    'size-600-400': screen.sm,
-    'col': !screen.sm
+    'size-600-400': $bm.screen.gt.sm,
+    'col': !$bm.screen.gt.sm
   }">
     <bm-card class="indent-3">
       蓝芒科技及其关联公司（合称为“我们”）致力于保护及尊重您的隐私。本隐私政策声明仅适用于位于中华人民共和国境内（不含香港特别行政区、澳门特别行政区、台湾地区）且年满18周岁的
@@ -163,19 +163,11 @@
 
 <script>
 import { defineComponent } from 'vue'
-import BmCard from '../BmCard.vue'
-import {useScreenStore} from "../../stores/screen";
+import BmCard from '../card/BmCard'
 export default defineComponent({
   name: 'PrivacyStatement',
   components: {
     BmCard
-  },
-  setup () {
-    const screen = useScreenStore()
-
-    return {
-      screen
-    }
   }
 })
 </script>

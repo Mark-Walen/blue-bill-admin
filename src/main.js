@@ -12,6 +12,7 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import './assets/css/main.css'
 import 'tailwindcss/tailwind.css'
 import Screen from "./plugin/Screen";
+import Dialog from "./plugin/Dialog";
 
 const app = createApp(App)
 
@@ -28,5 +29,5 @@ app.use(ElementPlus, {
         },
         screen: {}
     }
-})
+}).use(Dialog)
 app.mount('#app')

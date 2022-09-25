@@ -2,11 +2,11 @@
   <div class="dynamic-dialog-wrapper">
     <el-dialog
         ref="dialogRef"
-        v-model="dialogVisible"
-        v-if="!dialogDestroyed"
+        v-model="visible"
         class="dynamic-dialog"
-        @closed="closedHandle"
         :show-close="false"
+        @closed="closedHandler"
+        width="600px"
         align-center
         destroy-on-close >
       <template #header="{ close, titleId, titleClass }" style="--el-dialog-padding-primary: 0; padding-bottom: 0; margin-right: 0;">
@@ -24,8 +24,8 @@
 </template>
 
 <script setup>
-import BmBar from "./BmBar.vue";
-import {nextTick, ref} from "vue";
+import BmBar from "../BmBar.vue";
+import {getCurrentInstance, nextTick, reactive, ref, toRefs} from "vue";
 
 const props = defineProps({
   comp: { type: Object },
@@ -33,12 +33,22 @@ const props = defineProps({
   options: { type: Object }
 })
 
-const dialogVisible = true
-const dialogDestroyed = ref(false)
+const state = reactive({
+  visible: true
+})
 
-const closedHandle = () => {
+const { visible } = toRefs(state)
+
+const setVisible = (visible) => {
+  state.visible = visible
+}
+
+const { emit } = getCurrentInstance()
+
+function closedHandler() {
+  setVisible(false)
   nextTick(() => {
-    dialogDestroyed.value = true
+    emit('closed')
   })
 }
 </script>
@@ -51,9 +61,13 @@ const closedHandle = () => {
 }
 
 .wrapper
-  position: relative;
+  position relative;
   right var(--el-dialog-padding-primary)
   bottom var(--el-dialog-padding-primary)
   width 110.5%
+
+.dynamic-dialog-wrapper :deep(.el-dialog) {
+  --el-dialog-padding-primary 0
+}
 
 </style>
