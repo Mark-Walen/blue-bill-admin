@@ -1,0 +1,134 @@
+<template>
+  <el-row>
+    <el-container class="bm-container">
+      <el-aside :width="isCollapse?'80px':'256px'" class="bm-sider" v-if="$bm.screen.gt.sm">
+        <el-menu
+            :collapse="isCollapse"
+            class="bm-sider-menu">
+          <div class="logo" style="color: var(--el-menu-text-color); font-size: 24px;">BLUE MONSTER</div>
+        </el-menu>
+      </el-aside>
+      <el-container class="bm-content-container">
+        <el-header v-if="$bm.screen.gt.sm" height="98px">
+          <div class="bm-header">
+            <span class="bm-header-trigger" @click="showMenu">
+              <el-icon v-if="isCollapse" :size="20"><svg-icon name="menu-unfold" :size="20"></svg-icon></el-icon>
+              <el-icon v-else :size="20"><svg-icon name="menu-fold" :size="20"></svg-icon></el-icon>
+            </span>
+          </div>
+          <div class="bm-page-header has-breadcrumb">
+            <el-breadcrumb separator="/">
+              <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+              <el-breadcrumb-item
+              ><a href="/">promotion management</a></el-breadcrumb-item
+              >
+              <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+            </el-breadcrumb>
+          </div>
+        </el-header>
+        <el-main>
+<!--          <router-view />-->
+        </el-main>
+      </el-container>
+      <el-footer v-if="!$bm.screen.gt.sm">
+        <div>底部</div>
+      </el-footer>
+    </el-container>
+  </el-row>
+</template>
+
+<script>
+import {defineComponent, ref} from "vue"
+import debounce from "../utils/debounce";
+export default defineComponent({
+  name: "DashboardLayout",
+  setup() {
+    const isCollapse = ref(false)
+
+    const showMenu = debounce(() => {
+      isCollapse.value = !isCollapse.value
+    }, 100)
+
+    return {
+      isCollapse,
+      showMenu
+    }
+  }
+})
+</script>
+
+<style lang="stylus" scoped>
+.el-container, .el-container *
+  box-sizing border-box
+
+.bm-container
+  width 100vw
+  height 100vh
+  background #f0f2f5
+
+.bm-sider
+  background #001529
+  position relative
+  z-index 10
+  min-height: 100vh
+  box-shadow: 2px 0 6px rgb(0, 21, 41, 35%)
+  transition all 0.2s
+
+.el-menu.bm-sider-menu
+  border-right none
+  width 100%
+  transition background .3s,width .3s cubic-bezier(.2,0,0,1) 0s
+  --el-menu-bg-color #001529
+  --el-menu-text-color #fff
+
+.bm-sider-menu
+  .el-icon
+    transition font-size .15s cubic-bezier(.215,.61,.355,1),margin .3s cubic-bezier(.645,.045,.355,1)
+  .logo
+    height 64px
+
+.el-header
+  padding 0
+  line-height 64px
+  background #ffffff
+  z-index 9
+
+.bm-header
+  position relative
+  height 64px
+  padding 0
+  box-shadow 0 1px 4px rgba(0, 21, 41, 0.08)
+
+.bm-header-trigger
+  height 64px
+  line-height: 64px
+  vertical-align top
+  padding 0 22px
+  display inline-block
+  cursor pointer
+  -webkit-transition all .3s,padding 0s
+  transition all .3s,padding 0s
+
+  .el-icon
+    vertical-align -0.225em
+
+.bm-page-header
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+  margin: 0
+  color: rgba(0,0,0,.65)
+  font-size: 14px
+  font-variant: tabular-nums
+  line-height: 1.5
+  list-style: none
+  -webkit-font-feature-settings: "tnum"
+  font-feature-settings: "tnum"
+  position: relative
+  background-color: #fff
+
+.bm-page-header.has-breadcrumb
+  margin-top 12px
+  padding 0 24px 12px 24px
+  .el-breadcrumb
+    line-height 1.5
+</style>

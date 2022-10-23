@@ -3,7 +3,6 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import screen from "./plugin/Screen";
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -13,6 +12,8 @@ import './assets/css/main.css'
 import 'tailwindcss/tailwind.css'
 import Screen from "./plugin/Screen";
 import Dialog from "./plugin/Dialog";
+import 'virtual:svg-icons-register'
+import SvgIcon from "./components/icon/SvgIcon.vue";
 
 const app = createApp(App)
 
@@ -30,4 +31,5 @@ app.use(ElementPlus, {
         screen: {}
     }
 }).use(Dialog)
+app.component('SvgIcon', SvgIcon)
 app.mount('#app')
