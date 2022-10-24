@@ -15,6 +15,39 @@
               <el-icon v-if="isCollapse" :size="20"><svg-icon name="menu-unfold" :size="20"></svg-icon></el-icon>
               <el-icon v-else :size="20"><svg-icon name="menu-fold" :size="20"></svg-icon></el-icon>
             </span>
+            <div class="header-index-right header-index-light">
+              <el-dropdown class="header-index-action">
+                <div class="header-index-avatar">
+                  <el-avatar class="bm-avatar-sm" src="img/default-user-avatar.png" size="small" />
+                  <span>Blue Monster</span>
+                </div>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item>
+                      <el-icon><svg-icon name="user"></svg-icon></el-icon>
+                      Account Center
+                    </el-dropdown-item>
+                    <el-dropdown-item>
+                      <el-icon><svg-icon name="setting"></svg-icon></el-icon>
+                      Account Settings
+                    </el-dropdown-item>
+                    <el-dropdown-item divided>
+                      <el-icon><svg-icon name="logout"></svg-icon></el-icon>
+                      Logout
+                    </el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+              <el-tooltip
+                  effect="dark"
+                  content="消息中心"
+                  placement="bottom"
+              >
+                <el-badge is-dot :value="3" class="header-index-messagebox">
+                  <el-icon size="18px" style="margin-top: 22px;"><svg-icon name="message"></svg-icon></el-icon>
+                </el-badge>
+              </el-tooltip>
+            </div>
           </div>
           <div class="bm-page-header has-breadcrumb">
             <el-breadcrumb separator="/">
@@ -39,7 +72,7 @@
 
 <script>
 import {defineComponent, ref} from "vue"
-import debounce from "../utils/debounce";
+import debounce from "../utils/debounce"
 export default defineComponent({
   name: "DashboardLayout",
   setup() {
@@ -99,18 +132,49 @@ export default defineComponent({
   padding 0
   box-shadow 0 1px 4px rgba(0, 21, 41, 0.08)
 
-.bm-header-trigger
-  height 64px
-  line-height: 64px
-  vertical-align top
-  padding 0 22px
-  display inline-block
-  cursor pointer
-  -webkit-transition all .3s,padding 0s
-  transition all .3s,padding 0s
+  .bm-header-trigger
+    height 64px
+    line-height: 64px
+    vertical-align top
+    padding 0 22px
+    display inline-block
+    cursor pointer
+    -webkit-transition all .3s,padding 0s
+    transition all .3s,padding 0s
 
-  .el-icon
-    vertical-align -0.225em
+    .el-icon
+      vertical-align -0.225em
+
+.header-index-right
+  margin-right 8px
+  float right
+  height 100%
+  margin-left auto
+  overflow hidden
+
+.header-index-avatar, .header-index-messagebox
+  display inline-block
+  padding 0 12px
+  cursor pointer
+  height 100%
+  line-height 64px
+  transition all 0.3s
+
+.header-index-messagebox
+  margin-right 20px
+
+.el-badge.header-index-messagebox :deep(.el-badge__content.is-fixed)
+  transform none
+  margin-top 18px
+
+.header-index-avatar:hover, .header-index-messagebox:hover
+  background rgba(0, 0, 0, 0.025)
+
+.bm-avatar-sm
+  margin 20px 0
+  margin-right 8px
+  vertical-align top
+  //background transparent
 
 .bm-page-header
   -webkit-box-sizing: border-box

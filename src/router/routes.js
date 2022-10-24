@@ -1,19 +1,19 @@
 const routes = [
     {
         path: '/',
-        component: () => import('@/layouts/GuestLayout.vue'),
+        component: () => import('../layouts/GuestLayout.vue'),
         props: (route) => route.query,
-        redirect: '/login',
+        redirect: '/test',
         children: [
             {
                 path: 'login',
-                component: () => import('@/views/SignIn.vue')
+                component: () => import('../views/SignIn.vue')
             }
         ]
     },
     {
         path: '/test',
-        component: () => import('@/layouts/DashboardLayout.vue')
+        component: () => import('../layouts/DashboardLayout.vue')
     },
     {
         path: '/mobile-dialog',
