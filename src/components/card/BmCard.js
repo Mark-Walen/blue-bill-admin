@@ -1,11 +1,11 @@
-import { h, computed, getCurrentInstance } from 'vue'
+import { h, computed } from 'vue'
 import {createComponent} from "../../utils/create";
 import {hSlot} from "../../utils/render";
 
 // import useDark, { useDarkProps } from '../../composables/private/use-dark.js'
 
 export default createComponent({
-    name: 'QCard',
+    name: 'BmCard',
 
     props: {
         // ...useDarkProps,

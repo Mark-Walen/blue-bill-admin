@@ -18,7 +18,7 @@ export default defineComponent({
       }
     },
     bodyStyle: {
-      type: Object,
+      type: String | Object,
       default () {
         return { padding: '0px' }
       }
