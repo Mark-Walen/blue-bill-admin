@@ -1,7 +1,6 @@
 <template>
   <div class="dynamic-dialog-wrapper">
     <el-dialog
-        ref="dialogRef"
         v-model="visible"
         class="dynamic-dialog"
         :show-close="false"
@@ -18,7 +17,7 @@
           </bm-bar>
         </div>
       </template>
-      <component :is="props.comp" v-bind="props.cmpProps"></component>
+      <component :is="props.comp" v-bind="props.comProps"></component>
     </el-dialog>
   </div>
 </template>

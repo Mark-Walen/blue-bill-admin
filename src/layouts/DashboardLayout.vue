@@ -7,7 +7,9 @@
             router
             :default-active="$route.href"
             class="bm-sider-menu">
-          <div class="logo" style="color: var(--el-menu-text-color); font-size: 24px;">BLUE MONSTER</div>
+          <div class="logo" style="color: var(--el-menu-text-color); font-size: 24px;">
+            <svg-icon v-if="!isCollapse" name="logo-bmv-light" :width="180" :height="56" style="margin: 0 auto; padding-top: 6px;"></svg-icon>
+          </div>
           <el-menu-item index="/workspace/dashboard">
             <svg-icon name="dashboard-default" :size="16" color="inherit"></svg-icon>
             <span>工作台</span>
@@ -121,7 +123,7 @@ import {useRoute} from "vue-router/dist/vue-router";
 import BmCard from "../components/card/BmCard";
 export default defineComponent({
   name: "DashboardLayout",
-  components: {BmCard},
+  components: { BmCard },
   setup() {
     const isCollapse = ref(false)
     const isMessageBoxOpened = ref(false)

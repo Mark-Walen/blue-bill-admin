@@ -37,8 +37,6 @@ export const createDialog = (DefaultComponent, parentApp) => {
         }, parentApp)
         vm = app.mount(el)
         document.body.appendChild(el)
-        // console.log(vm)
-        // vm.setVisible(true)
     }
 }
 

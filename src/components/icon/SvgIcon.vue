@@ -1,11 +1,11 @@
 <template>
-  <svg :class="svgClass" :style="{ width: size + 'px', height: size + 'px', color: color }" @click="emit('on-click')" aria-hidden="true">
+  <svg :class="svgClass" :style="iconStyle" @click="emit('on-click')" aria-hidden="true">
     <use :xlink:href="symbolId" />
   </svg>
 </template>
 
 <script setup>
-import {computed, defineComponent} from "vue";
+import {computed, defineComponent, reactive} from "vue";
 
 const props = defineProps({
   prefix: {
@@ -15,6 +15,12 @@ const props = defineProps({
   name: {
     type: String,
     required: true
+  },
+  width: {
+    type: Number
+  },
+  height: {
+    type: Number
   },
   size: {
     type: Number,
@@ -33,6 +39,31 @@ const svgClass = computed(() => {
     return `${props.prefix}__` + props.name
   } else {
     return props.prefix
+  }
+})
+const iconStyle = computed(() => {
+  let w = props.width, h = props.height
+  if (w && h) {
+    return {
+      width: w + 'px',
+      height: h + 'px',
+      color: props.color
+    }
+  } else if (w && h == null) {
+    return {
+      width: w + 'px',
+      color: props.color
+    }
+  } else if (w == null && h) {
+    return {
+      height: h + 'px',
+      color: props.color
+    }
+  }
+  return {
+    width: props.size + 'px',
+    height: props.size + 'px',
+    color: props.color
   }
 })
 </script>

@@ -29,10 +29,9 @@ export const useResponsiveDialog = (comp) => {
     const router = useRouter()
     const show = (props, options) => {
       if (Screen.gt.sm) {
-          console.log(Dialog)
           Dialog.create({
               component: DynamicDialogWrapper,
-              componentProps: { comp, compProps: props, options}
+              componentProps: { comp, comProps: props, options}
           })
       } else {
           if (!dialogTemporary.firstSource) {

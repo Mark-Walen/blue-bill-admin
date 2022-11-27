@@ -1,35 +1,49 @@
 <template>
-  <bm-card class="bm-statistic" style="width: 100%;display: inline-flex;">
-    <el-tabs v-model="activeDateType" style="width: 50%; height: 400px">
-      <el-tab-pane label="周" name="0">
-        <bill-statistic></bill-statistic>
-      </el-tab-pane>
-    </el-tabs>
-    <bm-card class="daily-statistic" style="width: 50%;">
-      今日账单<hr/>
-      123
-    </bm-card>
-  </bm-card>
+  <div>
+    <el-row>
+      <el-col class="bm-statistic" :xs="24" :sm="24" :md="12" :lg="12" :xl="16">
+        <bm-card>
+          <el-select v-model="activeDateType" class="bm-select" :placeholder="state.dateTypeList[0].name">
+            <el-option
+                v-for="item in state.dateTypeList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id" />
+          </el-select>
+          <bill-statistic :x-axis-data="state.xAxisData"></bill-statistic>
+        </bm-card>
+      </el-col>
+      <el-col class="daily-statistic" :xs="24" :sm="24" :md="12" :lg="12" :xl="8">
+        <bm-card>
+          今日账单<hr/>
+          123
+        </bm-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script setup>
 import BmCard from "../../components/card/BmCard";
 import BillStatistic from "../../components/statistic/BillStatistic.vue";
-import {reactive, ref} from "vue";
-const activeDateType = ref('0')
+import {reactive, ref, toRef} from "vue";
+import {getLastMonthDays, getLastNDays} from "../../utils/date";
+
+const activeDateType = ref('近七天')
 const state = reactive({
+  xAxisData: getLastNDays(7, 'MM-DD'),
   dateTypeList: [
     {
       id: 0,
-      name: '周'
+      name: '近七天',
     },
     {
       id: 1,
-      name: '月'
+      name: '近一月'
     },
     {
       id: 2,
-      name: '年'
+      name: '近一年'
     },
   ]
 })
@@ -37,7 +51,5 @@ const state = reactive({
 
 <style lang="stylus" scoped>
 .bm-statistic
-  --bm-card-padding 24px
-  .daily-statistic
-    --bm-card-padding 16px 0 0 24px
+  --bm-card-padding 20px
 </style>

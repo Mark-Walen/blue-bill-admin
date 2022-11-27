@@ -215,7 +215,6 @@
 <script>
 import { defineComponent } from 'vue'
 import BmCard from '../BmCard.vue'
-import {useScreenStore} from "../../stores/screen";
 
 export default defineComponent({
   name: 'UserAgreement',

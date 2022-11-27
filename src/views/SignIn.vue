@@ -81,14 +81,12 @@ export default defineComponent({
     const userAgreementUi = useResponsiveDialog(markRaw(UserAgreement))
     const toUserAgreement = () => {
       // TODO 实现用户协议 UI
-      console.log("用户协议")
       userAgreementUi.show({}, {
         title: '用户协议'
       }, screen)
     }
     const toPrivacyStatement = () => {
       // TODO 实现隐私声明 UI
-      console.log("隐私声明")
       privacyStatementUi.show({}, {
         title: '隐私声明'
       }, screen)
