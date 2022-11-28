@@ -1,6 +1,6 @@
 <template>
-  <el-card :class="{
-    'p-md scroll-y-auto': true,
+  <bm-card :class="{
+    'scroll-y-auto p-md': true,
     'size-600-400': $bm.screen.gt.sm,
     'col': !$bm.screen.gt.sm
   }">
@@ -210,11 +210,11 @@
     <bm-card class="indent-12">
       8.3 本协议解释权及修订权归蓝芒科技（深圳）有限公司所有。
     </bm-card>
-  </el-card>
+  </bm-card>
 </template>
 <script>
 import { defineComponent } from 'vue'
-import BmCard from '../BmCard.vue'
+import BmCard from '../card/BmCard'
 
 export default defineComponent({
   name: 'UserAgreement',

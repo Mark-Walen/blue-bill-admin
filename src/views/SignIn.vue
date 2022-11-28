@@ -19,7 +19,7 @@
           'items-center': $bm.screen.gt.sm,
           'items-start': !$bm.screen.gt.sm
         }">
-          <img src="img/apple-touch-icon.png" alt="蓝芒记账本" style="width: 64px;"/>
+          <img src="/img/apple-touch-icon.png" alt="蓝芒记账本" style="width: 64px;"/>
           <span>蓝芒记账，累积每一滴汗水</span>
         </el-row>
         <el-form-item :class="{'mb': !screen.sm}" prop="username">
