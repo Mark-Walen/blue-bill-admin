@@ -1,0 +1,1 @@
+import{B as a}from "./BmCard.499976da.js";import{_ as o,d as t,r as s,o as c,c as n,w as r,f as _}from "./index.b31226df.js";const d=t({components:{BmCard:a},setup(){}});function p(f, m, l, u, i, x){const e=s("bm-card");return c(),n(e,null,{default:r(()=>[_(" \u4EA4\u901A\u5361 ")]),_:1})}const B=o(d,[["render",p],["__scopeId","data-v-aaf1a7fc"]]);export{B as default};

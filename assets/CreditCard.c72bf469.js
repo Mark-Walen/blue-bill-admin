@@ -1,0 +1,1 @@
+import{B as t}from "./BmCard.499976da.js";import{_ as o,r as a,o as r,c as _,w as s,f as c}from "./index.b31226df.js";const n={name:"CreditCard",components:{BmCard:t}};function d(p, m, f, i, l, C){const e=a("bm-card");return r(),_(e,null,{default:s(()=>[c("\u6211\u7684\u94F6\u884C\u5361")]),_:1})}const b=o(n,[["render",d],["__scopeId","data-v-952bf171"]]);export{b as default};
