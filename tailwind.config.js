@@ -11,7 +11,11 @@ module.exports = {
       lg: '24px',
       xl: '48px',
     },
-    extend: {},
+    extend: {
+      textIndent: {
+        '3': '0.75rem'
+      }
+    },
   },
   plugins: [],
 }

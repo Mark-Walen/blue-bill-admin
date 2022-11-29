@@ -1,6 +1,6 @@
 <template>
   <bm-card :class="{
-    'scroll-y-auto p-md': true,
+    'scroll-y-auto p-md text-xs text-black': true,
     'size-600-400': $bm.screen.gt.sm,
     'col': !$bm.screen.gt.sm
   }">
