@@ -7,7 +7,7 @@ import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/bill-system-admin/',
+    // base: '/bill-system-admin/',
     plugins: [
         vue(),
         createSvgIconsPlugin({

@@ -13,7 +13,10 @@
           <bm-bar>
             <span class="font-bold text-caption" :id="titleId">{{ props.options && props.options.title }}</span>
             <div class="space"></div>
-            <el-button @click="close">X</el-button>
+            <el-button @click="close" link class="btn__dialog-close">
+              <span class="focus-helper"></span>
+              <svg-icon @click="close" :size="18" name="close"></svg-icon>
+            </el-button>
           </bm-bar>
         </div>
       </template>
@@ -63,10 +66,60 @@ function closedHandler() {
   position relative;
   right var(--el-dialog-padding-primary)
   bottom var(--el-dialog-padding-primary)
-  width 110.5%
 
-.dynamic-dialog-wrapper :deep(.el-dialog) {
+.dynamic-dialog-wrapper :deep(.el-dialog)
   --el-dialog-padding-primary 0
-}
+
+.dynamic-dialog-wrapper :deep(.el-dialog__header)
+  padding-bottom 0
+  margin-right: 0
+  .btn__dialog-close
+    margin-left 2px
+
+
+.btn__dialog-close
+  padding 0.285em
+  position relative
+  min-height 2em
+  width auto
+  height auto
+  line-height 1.715em
+  .focus-helper
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    pointer-events none
+    border-radius inherit
+    opacity: 0
+    transition background-color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.5, 1)
+    outline 0
+  .focus-helper:after
+    background-color #fff
+
+  .focus-helper:before
+    background-color #000
+
+.focus-helper:before,
+.focus-helper:after
+  content ""
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  border-radius inherit
+  opacity: 0
+  transition background-color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), opacity 0.6s cubic-bezier(0.25, 0.8, 0.5, 1)
+
+.btn__dialog-close:hover
+  .focus-helper
+    background currentColor
+    opacity 0.5
+  .focus-helper:before
+    opacity .1
+  .focus-helper:after
+    opacity .4
 
 </style>
