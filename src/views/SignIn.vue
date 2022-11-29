@@ -139,17 +139,17 @@ export default defineComponent({
 }
 
 :deep(.el-checkbox__inner) {
-  width: 24px;
-  height: 24px;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 :deep(.el-checkbox__inner:after) {
-  border: 3px solid #fff;
+  border: 2px solid #fff;
   border-left: 0;
   border-top: 0;
-  left: 8px;
-  top: 3px;
-  height: 10px;
+  left: 3px;
+  top: 0;
+  height: 7px;
   width: 5px;
 }
 
