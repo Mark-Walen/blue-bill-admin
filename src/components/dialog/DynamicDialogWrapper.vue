@@ -116,9 +116,9 @@ function closedHandler() {
 .btn__dialog-close:hover
   .focus-helper
     background currentColor
-    opacity 0.5
+    opacity 0.35
   .focus-helper:before
-    opacity .1
+    opacity .15
   .focus-helper:after
     opacity .4
 
