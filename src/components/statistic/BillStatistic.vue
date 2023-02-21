@@ -23,35 +23,48 @@ onMounted(() => {
     height: 480
   });
 
-  const title = {}
-  if (typeof props.title != "undefined" && props.title.hasOwnProperty('text')) {
-    title.text = props.title.text | ''
-    if (title.text !== '') {
-      title.left = props.title.left | 'center'
-    } else {
-      delete title.text
+  const title = {
+    textStyle: {
+      fontSize: 12
+    }
+  }
+  if (typeof props.title != "undefined") {
+    title.text = props.title.text || ''
+    if (props.title.hasOwnProperty('text') && props.title.text !== '') {
+      title.text = props.title.text
+    }
+    if (props.title.hasOwnProperty('left') && props.title.left !== '') {
+      title.left = props.title.left
     }
   }
 
   const option = {
     title,
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['支出', '收入']
+    },
     xAxis: {
       data: props.xAxisData
     },
     yAxis: {},
     series: [
       {
-        data: [24.16, 32.30, 58.57, 1.38, 0, 39.10, 24.3],
-        type: 'bar',
-        stack: 'x'
+        name: '支出',
+        data: [24.16, 32.30, 58.57, 1.38, 0, 39.10, 24.3, 16, 14.5, 27.86, 32, 26.5, 39.3, 17.6, 52.9],
+        type: 'line',
+        smooth: true
       },
       {
-        data: [0, 0, 0, 0, -20, 0, 0],
-        type: 'bar',
-        stack: 'x'
+        name: '收入',
+        data: [0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        type: 'line',
+        smooth: true
       }
     ]
-  };
+  }
   option && myChart.setOption(option)
 
   window.onresize = () => myChart.resize()

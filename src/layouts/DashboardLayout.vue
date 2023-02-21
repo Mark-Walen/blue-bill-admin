@@ -293,4 +293,8 @@ export default defineComponent({
 
 .el-menu-item .el-button.is-link:hover
   --el-button-hover-link-text-color: #fff
+
+
+.el-main
+  --el-main-padding: 24px;
 </style>

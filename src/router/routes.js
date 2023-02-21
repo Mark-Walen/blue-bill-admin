@@ -34,7 +34,7 @@ const routes = [
                 children: [
                     {
                         path: '/workspace/bill-management/bill-details',
-                        component: () => import('../views/dashboard/BillDetails.vue'),
+                        component: () => import('../views/bill/BillDetails.vue'),
                         meta: {
                             title: '账单明细',
                             icon: '',
@@ -42,15 +42,15 @@ const routes = [
                     },
                     {
                         path: '/workspace/bill-management/bill-category',
-                        component: () => import('../views/dashboard/BillCategory.vue'),
+                        component: () => import('../views/bill/BillCategory.vue'),
                         meta: {
-                            title: '账单明细',
+                            title: '账单类别',
                             icon: '',
                         },
                     },
                     {
                         path: '/workspace/bill-management/merchant',
-                        component: () => import('../views/dashboard/Merchant.vue'),
+                        component: () => import('../views/bill/Merchant.vue'),
                         meta: {
                             title: '常用店铺',
                             icon: '',
@@ -68,7 +68,7 @@ const routes = [
                 children: [
                     {
                         path: '/workspace/my-wallet/credit-card',
-                        component: () => import('../views/dashboard/CreditCard.vue'),
+                        component: () => import('../views/wallet/CreditCard.vue'),
                         meta: {
                             title: '银行卡',
                             icon: ''
@@ -76,7 +76,7 @@ const routes = [
                     },
                     {
                         path: '/workspace/my-wallet/fare-card',
-                        component: () => import('../views/dashboard/FareCard.vue'),
+                        component: () => import('../views/wallet/FareCard.vue'),
                         meta: {
                             title: '交通卡',
                             icon: ''
@@ -84,7 +84,7 @@ const routes = [
                     },
                     {
                         path: '/workspace/my-wallet/auto-renew',
-                        component: () => import('../views/dashboard/AutoRenew.vue'),
+                        component: () => import('../views/wallet/AutoRenew.vue'),
                         meta: {
                             title: '自动续费',
                             icon: ''
@@ -92,7 +92,7 @@ const routes = [
                     },
                     {
                         path: '/workspace/my-wallet/business-card',
-                        component: () => import('../views/dashboard/BusinessCard.vue'),
+                        component: () => import('../views/wallet/BusinessCard.vue'),
                         meta: {
                             title: '名片',
                             icon: ''

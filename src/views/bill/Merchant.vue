@@ -6,7 +6,7 @@
       <el-table-column prop="logo" label="logo" align="center" width="150">
         <template #default="scope">
           <div style="display: flex; align-items: center;">
-            <el-image :src="scope.row.logo" style="width: 120px;" fit="scale"/>
+            <el-image :src="scope.row.logo" style="width: 120px;" fit="scale-down"/>
           </div>
         </template>
       </el-table-column>
