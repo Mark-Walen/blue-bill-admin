@@ -10,8 +10,8 @@
         <el-table-column width="120" sortable label="金额（￥）">
           <template #default="scope">{{ parseFloat(scope.row.money).toFixed(2) }}</template>
         </el-table-column>
-        <el-table-column prop="payee" show-overflow-tooltip min-width="144" label="商户名称 / 收款方"/>
         <el-table-column prop="paymentTime" min-width="120" show-overflow-tooltip sortable label="交易时间" />
+        <el-table-column prop="payee" show-overflow-tooltip min-width="144" label="商户名称 / 收款方"/>
         <el-table-column prop="via" width="168" label="交易方式" />
         <el-table-column prop="memo" min-width="144" label="备注" />
         <el-table-column fixed="right" label="操作" width="112" >

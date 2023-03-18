@@ -22,6 +22,7 @@ declare module '@vue/runtime-core' {
     ElCardWrapper: typeof import('./components/ElCardWrapper.vue')['default']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCol: typeof import('element-plus/es')['ElCol']
+    ElColumn: typeof import('element-plus/es')['ElColumn']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
