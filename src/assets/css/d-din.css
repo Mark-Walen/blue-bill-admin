@@ -1,0 +1,55 @@
+@font-face {
+    font-family: d-din;
+    font-style: normal;
+    font-weight: 400;
+    src: local('D-DIN'), url(@/assets/font/D-DIN/D-DIN.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din;
+    font-style: italic;
+    font-weight: 400;
+    src: local('D-DIN'), url(@/assets/font/D-DIN/D-DIN-Italic.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din;
+    font-style: normal;
+    font-weight: 700;
+    src: local('D-DIN'), url(@/assets/font/D-DIN/D-DIN-Bold.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din condensed;
+    font-style: normal;
+    font-weight: 400;
+    src: local('D-DIN Condensed'), url(@/assets/font/D-DIN/D-DINCondensed.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din exp;
+    font-style: normal;
+    font-weight: 400;
+    src: local('D-DIN Exp'), url(@/assets/font/D-DIN/D-DINExp.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din exp;
+    font-style: italic;
+    font-weight: 400;
+    src: local('D-DIN Exp'), url(@/assets/font/D-DIN/D-DINExp-Italic.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din condensed;
+    font-style: normal;
+    font-weight: 700;
+    src: local('D-DIN Condensed'), url(@/assets/font/D-DIN/D-DINCondensed-Bold.woff) format('woff')
+}
+
+@font-face {
+    font-family: d-din exp;
+    font-style: normal;
+    font-weight: 700;
+    src: local('D-DIN Exp'), url(@/assets/font/D-DIN/D-DINExp-Bold.woff) format('woff')
+}

@@ -1,6 +1,7 @@
 @import "base.css";
 @import "../../components/toolbar/BmToolbar.css";
 @import "../../components/card/BmCard.css";
+@import "@/assets/css/d-din.css";
 
 html, body, #app {
   width: 100%;
@@ -52,4 +53,109 @@ html, body, #app {
 
 .space {
   flex-grow: 1 !important;
+}
+
+.bm-watch-resize {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tool-item {
+  list-style: none;
+  position: relative;
+  grid-column: span 1;
+  grid-row: span 1;
+  user-select: none;
+  box-sizing: border-box;
+  width: calc(var(--bm-tool-item-size) + var(--bm-tool-item-gap-y));
+  height: calc(var(--bm-tool-item-size) + var(--bm-tool-item-gap-x));
+  border-radius: var(--bm-tool-item-radius);
+}
+
+.tool-item .tool-item-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--bm-tool-item-radius);
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.102);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.template-item-icon {
+  position: relative;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: .6em;
+}
+
+.template-item-icon:before {
+  background-position: top center;
+  background-size: 128px;
+}
+
+.item-size-1x1, .item-size-mini {
+  width: var(--bm-tool-item-size);
+  height: var(--bm-tool-item-size);
+}
+
+.item-size-1x2 {
+  grid-column: span 2;
+  width: calc(var(--bm-tool-item-size) * 2 + var(--bm-tool-item-gap-y));
+  height: var(--bm-tool-item-size);
+}
+
+.item-size-2x1 {
+  grid-row: span 2;
+  width: var(--bm-tool-item-size);
+  height: calc(var(--bm-tool-item-size) * 2 + var(--bm-tool-item-gap-x));
+}
+
+.item-size-2x2, .item-size-small {
+  grid-column: span 2;
+  grid-row: span 2;
+  width: calc(var(--bm-tool-item-size) * 2 + var(--bm-tool-item-gap-y));
+  height: calc(var(--bm-tool-item-size) * 2 + var(--bm-tool-item-gap-x));
+}
+
+.item-size-2x4, .item-size-medium {
+  grid-column: span 4;
+  grid-row: span 2;
+  width: calc(var(--bm-tool-item-size) * 4 + var(--bm-tool-item-gap-y) * 3);
+  height: calc(var(--bm-tool-item-size) * 2 + var(--bm-tool-item-gap-x));
+}
+
+.item-size-4x4, .item-size-medium {
+  grid-column: span 4;
+  grid-row: span 4;
+  width: calc(var(--bm-tool-item-size) * 4 + var(--bm-tool-item-gap-y) * 3);
+  height: calc(var(--bm-tool-item-size) * 4 + var(--bm-tool-item-gap-x) * 3);
+}
+
+.item-size-4x8, .item-size-xl {
+  grid-column: span 8;
+  grid-row: span 4;
+  width: calc(var(--bm-tool-item-size) * 8 + var(--bm-tool-item-gap-y) * 7);
+  height: calc(var(--bm-tool-item-size) * 4 + var(--bm-tool-item-gap-x) * 3);
+}
+
+.item-size-5x8 {
+  grid-column: span 8;
+  grid-row: span 5;
+  width: calc(var(--bm-tool-item-size) * 8 + var(--bm-tool-item-gap-y) * 7);
+  height: calc(var(--bm-tool-item-size) * 5 + var(--bm-tool-item-gap-x)*4);
+}
+
+.number {
+  font-family: 'D-DIN Condensed', sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.025em;
 }

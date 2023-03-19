@@ -20,7 +20,7 @@ const props = defineProps({
 onMounted(() => {
   const chartDom = document.getElementById('bill-statistic');
   const myChart = echarts.init(chartDom, null, {
-    height: 480
+    height: "auto"
   });
 
   const title = {

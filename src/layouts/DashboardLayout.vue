@@ -109,7 +109,9 @@
         title="消息中心"
         direction="rtl"
         append-to-body
-        :modal="false">
+        :modal="false"
+        style="max-width: 440px"
+      >
         你好
       </el-drawer>
     </el-container>

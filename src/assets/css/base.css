@@ -25,10 +25,18 @@
 :root {
     --bm-separator-color: rgba(0, 0, 0, 0.4);
     --bm-separator-dark-color: rgba(255, 255, 255, .28);
+    --bm-card-cmb-color: #fd5861;
+    --bm-card-ccb-color: #3477c0;
+    --bm-card-psboc-color: #1dac91;
 }
 
 :root {
     --bm-generic-border-radius: 4px;
+    --bm-tool-item-size: 64px;
+    --bm-tool-item-gap-x: 32px;
+    --bm-tool-item-gap-y: 32px;
+    --bm-tool-item-radius: 16px;
+    --bm-tool-item-duration: .3s;
 }
 
 body {
@@ -55,4 +63,8 @@ body {
 .my-2 {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+ol, ul {
+    list-style: none;
 }
