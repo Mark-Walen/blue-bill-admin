@@ -6,13 +6,25 @@
           <div class="statistic-too-item">
             <ul class="statistic-tool-grid">
               <li class="tool-item tool-item-duration  item-size-2x4">
-                <ul class="tool-item-icon">
-                  <li class="bm-watch-resize carousel-item">
-                    <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="creditCard" title="中国建设银行" :style="{backgroundColor: 'var(--bm-card-ccb-color)'}">
+                <!--                <ul class="tool-item-icon">-->
+                <swiper
+                    :modules="modules"
+                    :pagination="{ clickable: true }"
+                    :space-between="1"
+                    :spaceBetween="30"
+                    :loop="true"
+                    :centered-slides="true"
+                    :autoplay="false"
+                    class="tool-item-icon">
+                  <swiper-slide class="bm-watch-resize carousel-item">
+                    <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="creditCard"
+                         title="中国建设银行" :style="{backgroundColor: 'var(--bm-card-ccb-color)'}">
                       <div class="item-head">
-                        <div class="icon"><img :src="banksObj['01050000'].icon"  alt="ccb"/></div>
-                        <div class="title tracking-wider">{{banksObj['01050000'].name}}</div>
-                        <div class="operator"><svg-icon name="more-horiz" style="color: white;"></svg-icon></div>
+                        <div class="icon"><img :src="banksObj['01050000'].icon" alt="ccb"/></div>
+                        <div class="title tracking-wider">{{ banksObj['01050000'].name }}</div>
+                        <div class="operator">
+                          <svg-icon name="more-horiz" style="color: white;"></svg-icon>
+                        </div>
                       </div>
                       <div class="card-number number tracking-wider">6217 0088 8888 8888 888</div>
                       <div class="item-foot inline-flex relative">
@@ -24,16 +36,20 @@
                           <div class="disc-date">日期</div>
                           <div class="date number">{{ today }}</div>
                         </div>
-                        <img src="/src/assets/img/unionpay.png" alt="unionpay" style="width: 42px; height: 32px; transform: scale(2.75); position:absolute; right: 8px; bottom: 8px;"/>
+                        <img src="/src/assets/img/unionpay.png" alt="unionpay"
+                             style="width: 42px; height: 32px; transform: scale(2.75); position:absolute; right: 8px; bottom: 8px;"/>
                       </div>
                     </div>
-                  </li>
-                  <li class="bm-watch-resize carousel-item">
-                    <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="creditCard" title="招商银行" :style="{backgroundColor: 'var(--bm-card-cmb-color)'}">
+                  </swiper-slide>
+                  <swiper-slide class="bm-watch-resize carousel-item">
+                    <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="creditCard"
+                         title="招商银行" :style="{backgroundColor: 'var(--bm-card-cmb-color)'}">
                       <div class="item-head">
-                        <div class="icon"><img :src="banksObj['03080000'].icon"  alt="cmb"/></div>
-                        <div class="title tracking-wider">{{banksObj['03080000'].name}}</div>
-                        <div class="operator"><svg-icon name="more-horiz" style="color: white;"></svg-icon></div>
+                        <div class="icon"><img :src="banksObj['03080000'].icon" alt="cmb"/></div>
+                        <div class="title tracking-wider">{{ banksObj['03080000'].name }}</div>
+                        <div class="operator">
+                          <svg-icon name="more-horiz" style="color: white;"></svg-icon>
+                        </div>
                       </div>
                       <div class="card-number number tracking-wider">6226 0988 8888 8888 888</div>
                       <div class="item-foot inline-flex relative">
@@ -45,20 +61,25 @@
                           <div class="disc-date">日期</div>
                           <div class="date number">{{ today }}</div>
                         </div>
-                        <img src="/src/assets/img/unionpay.png" alt="unionpay" style="width: 42px; height: 32px; transform: scale(2.75); position:absolute; right: 8px; bottom: 8px;"/>
+                        <img src="/src/assets/img/unionpay.png" alt="unionpay"
+                             style="width: 42px; height: 32px; transform: scale(2.75); position:absolute; right: 8px; bottom: 8px;"/>
                       </div>
                     </div>
-                  </li>
-                  <li class="bm-watch-resize carousel-item">
-                    <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="billBook" title="记账本">
+                  </swiper-slide>
+                  <swiper-slide class="bm-watch-resize carousel-item">
+                    <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="billBook"
+                         title="记账本">
                       <div class="item-head">
                         <div class="title tracking-wider">记账本</div>
-                        <div class="operator"><svg-icon name="more-horiz"></svg-icon></div>
+                        <div class="operator">
+                          <svg-icon name="more-horiz"></svg-icon>
+                        </div>
                       </div>
                       <div class="item-foot"></div>
                     </div>
-                  </li>
-                </ul>
+                  </swiper-slide>
+                </swiper>
+                <!--                </ul>-->
               </li>
               <li class="tool-item tool-item-duration  item-size-2x2">
                 <div class="tool-item-icon" title="3 月收入">
@@ -66,7 +87,9 @@
                     <div class="template-item-icon income-component item-size-2x2">
                       <div class="item-head">
                         <span class="title">收入</span>
-                        <div class="operator"><svg-icon name="more-horiz"></svg-icon></div>
+                        <div class="operator">
+                          <svg-icon name="more-horiz"></svg-icon>
+                        </div>
                       </div>
                       <div class="item-foot">
                         <div class="number">62,870.14 ￥</div>
@@ -85,7 +108,9 @@
                     <div class="template-item-icon outcome-component item-size-2x2">
                       <div class="item-head">
                         <span class="title">支出</span>
-                        <div class="operator"><svg-icon name="more-horiz"></svg-icon></div>
+                        <div class="operator">
+                          <svg-icon name="more-horiz"></svg-icon>
+                        </div>
                       </div>
                       <div class="item-foot">
                         <div class="number">70,235.87 ￥</div>
@@ -100,10 +125,12 @@
               </li>
             </ul>
             <ul class="statistic-tool-grid">
-              <li class="tool-item tool-item-duration" :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs}">
+              <li class="tool-item tool-item-duration"
+                  :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs}">
                 <div class="tool-item-icon" title="3 月支出统计数据">
                   <div class="bm-watch-resize">
-                    <div class="template-item-icon statistic-component" :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs}">
+                    <div class="template-item-icon statistic-component"
+                         :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs}">
                       <el-select v-model="activeDateType" class="bm-select" :placeholder="state.dateTypeList[0].name">
                         <el-option
                             v-for="item in state.dateTypeList"
@@ -111,7 +138,8 @@
                             :label="item.name"
                             :value="item.id"/>
                       </el-select>
-                      <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}" style="flex: 1 1 0"></bill-statistic>
+                      <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}"
+                                      style="flex: 1 1 0"></bill-statistic>
                     </div>
                   </div>
                 </div>
@@ -126,10 +154,15 @@
 </template>
 
 <script setup>
-import BillStatistic from "../../components/statistic/BillStatistic.vue";
-import {reactive, ref, toRef} from "vue";
-import {getLastMonthDays, getLastNDays} from "@/utils/date";
-import banksObj from "@/assets/bankInfo/banks";
+import {Navigation, Pagination} from "swiper"
+import {Swiper, SwiperSlide} from "swiper/vue"
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import BillStatistic from "../../components/statistic/BillStatistic.vue"
+import {reactive, ref, toRef} from "vue"
+import {getLastMonthDays, getLastNDays} from "@/utils/date"
+import banksObj from "@/assets/bankInfo/banks"
 
 const today = getLastNDays(1, 'YYYY-MM-DD')[0]
 const activeDateType = ref('近七天')
@@ -177,6 +210,8 @@ const dailyBillList = [
 const load = () => {
   //
 }
+
+const modules = [Navigation, Pagination]
 </script>
 
 <style lang="stylus" scoped>
@@ -201,8 +236,9 @@ const load = () => {
 
 .statistic-tool-item-wrap
   position relative
+
   .statistic-tool-item
-    transition transform ease-out.28s !important
+    transition transform ease-out .28s !important
     position: absolute;
     top 0
     left 0
@@ -219,12 +255,14 @@ const load = () => {
   flex-flow column
   justify-content space-between
   padding 8px
+
   .item-head
     margin-top 8px
     width 100%
     display inline-flex
     flex-flow row
     position: relative;
+
     .operator
       position: absolute;
       right 8px
@@ -237,33 +275,47 @@ const load = () => {
       padding 4px
       background white
       border-radius: 50%
+
   .title
     font-size 20px
+
   .title, .disc
     color #686868
+
   .number
     font-size 24px
     margin-bottom 4px
 
 .template-item-icon[bill-type="creditCard"]
   color white
+
   .title
     font-size 16px
     line-height 2.25rem
     text-align center
+
   .title, .disc
     color #fff
+
   .card-number.number
     padding-left 20px
     font-weight normal
+
   .balance.number
     font-weight 600
+
   .disc
     padding-left 20px
+
     .disc-balance, .disc-date
       color #fefeff
+
   .number
     font-size 20px
+
+.tool-item-icon.swiper
+  --swiper-pagination-bottom -2px
+  --swiper-pagination-color #001529
 
 .template-item-icon.income-component, .template-item-icon.outcome-component
   .disc
@@ -274,6 +326,7 @@ const load = () => {
     align-items center
     font-size 12px
     margin-bottom 8px
+
     .float-rate
       padding 4px 8px
       border-radius 17px
