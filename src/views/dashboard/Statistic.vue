@@ -4,7 +4,7 @@
       <div class="statistic-tool-wrap">
         <div class="statistic-tool-item-wrap" style="height: 100%;">
           <div class="statistic-too-item">
-            <ul class="statistic-tool-grid">
+            <ul class="statistic-tool-grid content-center">
               <li class="tool-item tool-item-duration  item-size-2x4">
                 <!--                <ul class="tool-item-icon">-->
                 <swiper
@@ -123,22 +123,22 @@
                   </div>
                 </div>
               </li>
-            </ul>
-            <ul class="statistic-tool-grid">
               <li class="tool-item tool-item-duration"
-                  :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs}">
+                  :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs, 'row-end-7': $bm.screen.gt.sm, 'row-end-9': !$bm.screen.gt.sm}">
                 <div class="tool-item-icon" title="3 月支出统计数据">
                   <div class="bm-watch-resize">
                     <div class="template-item-icon statistic-component"
                          :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-4x8': $bm.screen.gt.xs}">
-                      <el-select v-model="activeDateType" class="bm-select" :placeholder="state.dateTypeList[0].name">
-                        <el-option
-                            v-for="item in state.dateTypeList"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id"/>
-                      </el-select>
-                      <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}"
+                      <div class="select-wrapper">
+                        <el-select v-model="activeDateType" class="bm-select" :placeholder="state.dateTypeList[0].name">
+                          <el-option
+                              v-for="item in state.dateTypeList"
+                              :key="item.id"
+                              :label="item.name"
+                              :value="item.id"/>
+                        </el-select>
+                      </div>
+                      <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}" :legend="{'orient': $bm.screen.gt.xs ? 'horizontal': 'vertical', top: $bm.screen.gt.xs ? '14': '2'}"
                                       style="flex: 1 1 0"></bill-statistic>
                     </div>
                   </div>
@@ -341,8 +341,7 @@ const modules = [Navigation, Pagination]
   background rgba(229, 53, 61, 20%)
 
 .statistic-component
-  display flex
-  flex-flow column
+  position relative
 
 .statistic-container
   .el-col
@@ -368,5 +367,14 @@ const modules = [Navigation, Pagination]
 
       .el-image
         max-width 32px
+
+.select-wrapper
+  position absolute
+  height 32px
+  top 16px
+  right 16px
+  z-index 9999
+  .bm-select
+    max-width 104px
 
 </style>

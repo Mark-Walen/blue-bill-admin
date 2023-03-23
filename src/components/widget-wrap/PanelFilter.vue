@@ -1,18 +1,17 @@
 <template>
   <bm-card>
-    <bm-card class="row justify-between items-start flex-nowrap ">
-      商品名称：<el-input
-        :input-style="`width: 240px`"
-        placeholder="商品名称"
-    />
-      交易单号：<el-input
-        :input-style="`width: 240px`"
-        placeholder="交易单号" />
+    <bm-card class="row items-start flex-nowrap panel-filter">
+      <div class="panel-filter-item">
+        商品名称：<el-input
+          :input-style="`width: 192px`"
+          placeholder="商品名称"
+      />
+      </div>
       <el-select-v2
         v-model="value"
         :options="options"
         placeholder="商户名称"
-        style="width: 240px"
+        style="width: 200px"
         allow-create
         filterable
         multiple
@@ -20,25 +19,12 @@
         collapse-tags-tooltip
         clearable
         :reserve-keyword="false"
+        class="panel-filter-item"
     />
-      <el-select-v2
-        v-model="value"
-        filterable
-        :options="options"
-        placeholder="账单类别"
-        style="width: 240px"
-        multiple
-    />
-      <el-select-v2
-        v-model="value"
-        filterable
-        :options="options"
-        placeholder="交易方式"
-        style="width: 240px"
-        multiple
-    />
-      <el-button>清空</el-button>
-      <el-button>筛选</el-button>
+      <div class="operation-groups panel-filter-item">
+        <el-button>清空</el-button>
+        <el-button>筛选</el-button>
+      </div>
     </bm-card>
   </bm-card>
 </template>
@@ -70,6 +56,7 @@ const value2 = ref('')
 
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+.panel-filter-item
+  margin 0 16px
 </style>
