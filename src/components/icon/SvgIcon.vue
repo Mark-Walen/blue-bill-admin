@@ -1,7 +1,9 @@
 <template>
-  <svg :class="svgClass" :style="iconStyle" @click="emit('on-click')" aria-hidden="true">
-    <use :xlink:href="symbolId" />
-  </svg>
+  <i :class="svgClass">
+    <svg :class="svgClass" :style="iconStyle" @click="emit('on-click')" aria-hidden="true">
+      <use :xlink:href="symbolId" />
+    </svg>
+  </i>
 </template>
 
 <script setup>
@@ -36,7 +38,7 @@ const emit = defineEmits(['on-click'])
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 const svgClass = computed(() => {
   if (props.name) {
-    return `${props.prefix}__` + props.name
+    return `${props.prefix} ${props.prefix}__` + props.name
   } else {
     return props.prefix
   }

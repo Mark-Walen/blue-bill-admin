@@ -11,12 +11,12 @@
             <svg-icon v-if="!isCollapse" name="logo-bmv-light" :width="180" :height="56" style="margin: 0 auto; padding-top: 6px;"></svg-icon>
           </div>
           <el-menu-item index="/workspace/dashboard">
-            <svg-icon name="dashboard-default" :size="16" color="inherit"></svg-icon>
-            <span>工作台</span>
+            <svg-icon name="dashboard" :size="24" color="inherit"></svg-icon>
+            <template #title><span>工作台</span></template>
           </el-menu-item>
           <el-sub-menu index="/workspace/bill-management">
             <template #title>
-              <svg-icon name="bank" :size="16" color="inherit"></svg-icon>
+              <svg-icon name="bank" :size="24" color="inherit"></svg-icon>
               <span>账单管理</span>
             </template>
             <el-menu-item index="/workspace/bill-management/bill-details">账单明细</el-menu-item>
@@ -25,7 +25,7 @@
           </el-sub-menu>
           <el-sub-menu index="/workspace/my-wallet">
             <template #title>
-              <svg-icon name="card-package" :size="16" color="inherit"></svg-icon>
+              <svg-icon name="cardholder" :size="24" color="inherit"></svg-icon>
               <span>我的钱包</span>
             </template>
             <el-menu-item index="/workspace/my-wallet/credit-card">银行卡</el-menu-item>
@@ -35,7 +35,7 @@
           </el-sub-menu>
           <el-sub-menu index="/workspace/account-center">
             <template #title>
-              <svg-icon name="user" :size="16" color="inherit"></svg-icon>
+              <svg-icon name="user" :size="24" color="inherit"></svg-icon>
               <span>个人中心</span>
             </template>
             <el-menu-item index="/workspace/account-center/account-info">账号资料</el-menu-item>
@@ -51,7 +51,7 @@
         </el-menu>
       </el-aside>
       <el-container class="bm-content-container">
-        <el-header v-if="$bm.screen.gt.sm" height="98px">
+        <el-header v-if="$bm.screen.gt.sm" height="96px">
           <div class="bm-header">
             <span class="bm-header-trigger" @click="showMenu">
               <el-icon v-if="isCollapse" :size="20"><svg-icon name="menu-unfold" :size="20"></svg-icon></el-icon>
@@ -70,11 +70,11 @@
                       Account Center
                     </el-dropdown-item>
                     <el-dropdown-item>
-                      <el-icon><svg-icon name="setting"></svg-icon></el-icon>
+                      <el-icon><svg-icon name="gear-six"></svg-icon></el-icon>
                       Account Settings
                     </el-dropdown-item>
                     <el-dropdown-item divided>
-                      <el-icon><svg-icon name="logout"></svg-icon></el-icon>
+                      <el-icon><svg-icon name="sign-out"></svg-icon></el-icon>
                       Logout
                     </el-dropdown-item>
                   </el-dropdown-menu>
@@ -86,7 +86,7 @@
                   placement="bottom"
               >
                 <el-badge is-dot :value="3" class="header-index-messagebox" @click="showMessageBox">
-                  <el-icon size="18px" style="margin-top: 22px;"><svg-icon name="message"></svg-icon></el-icon>
+                  <el-icon size="18px" style="margin-top: 22px;"><svg-icon name="chat-circle-dots"></svg-icon></el-icon>
                 </el-badge>
               </el-tooltip>
             </div>
@@ -187,6 +187,8 @@ export default defineComponent({
   transition background .3s,width .3s cubic-bezier(.2,0,0,1) 0s
   --el-menu-bg-color #001529
   --el-menu-text-color hsla(0, 0, 100%, 0.65)
+  .bm-icon
+    margin-right 8px
 
 
 .bm-sider-menu
@@ -295,7 +297,6 @@ export default defineComponent({
 
 .el-menu-item .el-button.is-link:hover
   --el-button-hover-link-text-color: #fff
-
 
 .el-main
   --el-main-padding: 24px;

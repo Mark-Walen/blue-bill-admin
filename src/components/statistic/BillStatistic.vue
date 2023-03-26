@@ -4,7 +4,8 @@
 
 <script setup>
 import * as echarts from 'echarts';
-import {ref, onMounted, onUnmounted} from 'vue'
+import { ref, onMounted, onUnmounted, toRefs, reactive } from "vue";
+import useBm from "@/composables/use-bm";
 
 const echartsInstance = ref()
 const props = defineProps({
@@ -26,6 +27,8 @@ onMounted(() => {
     height: "auto"
   });
 
+  const $bm = useBm();
+
   const title = {
     textStyle: {
       fontSize: 20
@@ -33,7 +36,11 @@ onMounted(() => {
     top: 12,
     left: 0
   }
-  const { orient: legendOrient, top } = props.legend
+  let legendOrient, top
+  if (typeof props.legend != "undefined") {
+    legendOrient = props.legend.orient || 'horizontal'
+    if (props.legend.hasOwnProperty('top'))  top = props.legend.top
+  }
   if (typeof props.title != "undefined") {
     title.text = props.title.text || ''
     if (props.title.hasOwnProperty('text') && props.title.text !== '') {
@@ -44,7 +51,7 @@ onMounted(() => {
     }
   }
 
-  const option = {
+  let option = {
     title,
     grid: {
       x: 48,
@@ -97,7 +104,12 @@ onMounted(() => {
   }
   option && myChart.setOption(option)
 
-  window.onresize = () => myChart.resize()
+  window.onresize = () => {
+    option.legend.orient = $bm.screen.gt.xs ? 'horizontal': 'vertical'
+    option.legend.top = $bm.screen.gt.xs ? '14': '2'
+    myChart.setOption(option)
+    myChart.resize()
+  }
   echartsInstance.value = myChart
 })
 

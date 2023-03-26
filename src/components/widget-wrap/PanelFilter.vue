@@ -1,29 +1,9 @@
 <template>
   <bm-card>
     <bm-card class="row items-start flex-nowrap panel-filter">
-      <div class="panel-filter-item">
-        商品名称：<el-input
-          :input-style="`width: 192px`"
-          placeholder="商品名称"
-      />
-      </div>
-      <el-select-v2
-        v-model="value"
-        :options="options"
-        placeholder="商户名称"
-        style="width: 200px"
-        allow-create
-        filterable
-        multiple
-        collapse-tags
-        collapse-tags-tooltip
-        clearable
-        :reserve-keyword="false"
-        class="panel-filter-item"
-    />
-      <div class="operation-groups panel-filter-item">
-        <el-button>清空</el-button>
-        <el-button>筛选</el-button>
+      <div class="search-box relative">
+        <el-input />
+        <svg-icon name="search" class="absolute"></svg-icon>
       </div>
     </bm-card>
   </bm-card>

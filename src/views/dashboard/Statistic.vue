@@ -8,20 +8,20 @@
               <li class="tool-item tool-item-duration  item-size-2x4">
                 <!--                <ul class="tool-item-icon">-->
                 <swiper
-                    :modules="modules"
-                    :pagination="{ clickable: true }"
-                    :space-between="1"
-                    :spaceBetween="30"
-                    :loop="true"
-                    :centered-slides="true"
-                    :autoplay="false"
-                    class="tool-item-icon">
+                  :modules="modules"
+                  :pagination="{ clickable: true }"
+                  :space-between="1"
+                  :spaceBetween="30"
+                  :loop="true"
+                  :centered-slides="true"
+                  :autoplay="false"
+                  class="tool-item-icon">
                   <swiper-slide class="bm-watch-resize carousel-item">
                     <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="creditCard"
                          title="中国建设银行" :style="{backgroundColor: 'var(--bm-card-ccb-color)'}">
                       <div class="item-head">
-                        <div class="icon"><img :src="banksObj['01050000'].icon" alt="ccb"/></div>
-                        <div class="title tracking-wider">{{ banksObj['01050000'].name }}</div>
+                        <div class="icon"><img :src="banksObj['01050000'].icon" alt="ccb" /></div>
+                        <div class="title tracking-wider">{{ banksObj["01050000"].name }}</div>
                         <div class="operator">
                           <svg-icon name="more-horiz" style="color: white;"></svg-icon>
                         </div>
@@ -36,8 +36,7 @@
                           <div class="disc-date">日期</div>
                           <div class="date number">{{ today }}</div>
                         </div>
-                        <img src="/src/assets/img/unionpay.png" alt="unionpay"
-                             style="width: 42px; height: 32px; transform: scale(2.75); position:absolute; right: 8px; bottom: 8px;"/>
+                        <img src="/src/assets/img/unionpay.png" alt="unionpay" />
                       </div>
                     </div>
                   </swiper-slide>
@@ -45,8 +44,8 @@
                     <div class="template-item-icon bill-book item-size-2x4 overflow-hidden" bill-type="creditCard"
                          title="招商银行" :style="{backgroundColor: 'var(--bm-card-cmb-color)'}">
                       <div class="item-head">
-                        <div class="icon"><img :src="banksObj['03080000'].icon" alt="cmb"/></div>
-                        <div class="title tracking-wider">{{ banksObj['03080000'].name }}</div>
+                        <div class="icon"><img :src="banksObj['03080000'].icon" alt="cmb" /></div>
+                        <div class="title tracking-wider">{{ banksObj["03080000"].name }}</div>
                         <div class="operator">
                           <svg-icon name="more-horiz" style="color: white;"></svg-icon>
                         </div>
@@ -61,8 +60,7 @@
                           <div class="disc-date">日期</div>
                           <div class="date number">{{ today }}</div>
                         </div>
-                        <img src="/src/assets/img/unionpay.png" alt="unionpay"
-                             style="width: 42px; height: 32px; transform: scale(2.75); position:absolute; right: 8px; bottom: 8px;"/>
+                        <img src="/src/assets/img/unionpay.png" alt="unionpay" />
                       </div>
                     </div>
                   </swiper-slide>
@@ -79,7 +77,6 @@
                     </div>
                   </swiper-slide>
                 </swiper>
-                <!--                </ul>-->
               </li>
               <li class="tool-item tool-item-duration  item-size-2x2">
                 <div class="tool-item-icon" title="3 月收入">
@@ -132,13 +129,13 @@
                       <div class="select-wrapper">
                         <el-select v-model="activeDateType" class="bm-select" :placeholder="state.dateTypeList[0].name">
                           <el-option
-                              v-for="item in state.dateTypeList"
-                              :key="item.id"
-                              :label="item.name"
-                              :value="item.id"/>
+                            v-for="item in state.dateTypeList"
+                            :key="item.id"
+                            :label="item.name"
+                            :value="item.id" />
                         </el-select>
                       </div>
-                      <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}" :legend="{'orient': $bm.screen.gt.xs ? 'horizontal': 'vertical', top: $bm.screen.gt.xs ? '14': '2'}"
+                      <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}"
                                       style="flex: 1 1 0"></bill-statistic>
                     </div>
                   </div>
@@ -154,64 +151,64 @@
 </template>
 
 <script setup>
-import {Navigation, Pagination} from "swiper"
-import {Swiper, SwiperSlide} from "swiper/vue"
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import BillStatistic from "../../components/statistic/BillStatistic.vue"
-import {reactive, ref, toRef} from "vue"
-import {getLastMonthDays, getLastNDays} from "@/utils/date"
-import banksObj from "@/assets/bankInfo/banks"
+import { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import BillStatistic from "../../components/statistic/BillStatistic.vue";
+import { reactive, ref, toRef } from "vue";
+import { getLastMonthDays, getLastNDays } from "@/utils/date";
+import banksObj from "@/assets/bankInfo/banks";
 
-const today = getLastNDays(1, 'YYYY-MM-DD')[0]
-const activeDateType = ref('近七天')
+const today = getLastNDays(1, "YYYY-MM-DD")[0];
+const activeDateType = ref("近七天");
 const state = reactive({
-  xAxisData: getLastNDays(15, 'MM-DD'),
+  xAxisData: getLastNDays(15, "MM-DD"),
   dateTypeList: [
     {
       id: 0,
-      name: '近七天',
+      name: "近七天"
     },
     {
       id: 1,
-      name: '近一月'
+      name: "近一月"
     },
     {
       id: 2,
-      name: '近一年'
-    },
+      name: "近一年"
+    }
   ]
-})
+});
 const dailyBillList = [
   {
-    date: '2022-12-04',
+    date: "2022-12-04",
     billItems: [
       {
-        categoryLogo: '/img/shopping.png',
-        money: '-35.9',
-        name: '餐饮',
-        time: '12:35',
-        merchant: '深圳金拱门食品有限公司',
+        categoryLogo: "/img/shopping.png",
+        money: "-35.9",
+        name: "餐饮",
+        time: "12:35",
+        merchant: "深圳金拱门食品有限公司",
         itemDetailList: []
       },
       {
-        categoryLogo: '/img/shopping.png',
-        money: '-35.9',
-        name: '餐饮',
-        time: '12:35',
-        merchant: '深圳金拱门食品有限公司',
+        categoryLogo: "/img/shopping.png",
+        money: "-35.9",
+        name: "餐饮",
+        time: "12:35",
+        merchant: "深圳金拱门食品有限公司",
         itemDetailList: []
       }
     ]
   }
-]
+];
 
 const load = () => {
   //
-}
+};
 
-const modules = [Navigation, Pagination]
+const modules = [Navigation, Pagination];
 </script>
 
 <style lang="stylus" scoped>
@@ -300,6 +297,7 @@ const modules = [Navigation, Pagination]
   .card-number.number
     padding-left 20px
     font-weight normal
+    font-size 24px
 
   .balance.number
     font-weight 600
@@ -313,8 +311,19 @@ const modules = [Navigation, Pagination]
   .number
     font-size 20px
 
+  .item-foot
+    margin-bottom 6px
+
+    img[alt="unionpay"]
+      width 42px
+      height 32px
+      transform scale(2.75)
+      position absolute
+      right 12px
+      bottom 12px
+
 .tool-item-icon.swiper
-  --swiper-pagination-bottom -2px
+  --swiper-pagination-bottom 2px
   --swiper-pagination-color #001529
 
 .template-item-icon.income-component, .template-item-icon.outcome-component
@@ -325,7 +334,7 @@ const modules = [Navigation, Pagination]
     justify-content space-between
     align-items center
     font-size 12px
-    margin-bottom 8px
+    margin-bottom 4px
 
     .float-rate
       padding 4px 8px
@@ -374,6 +383,7 @@ const modules = [Navigation, Pagination]
   top 16px
   right 16px
   z-index 9999
+
   .bm-select
     max-width 104px
 

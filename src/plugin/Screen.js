@@ -1,5 +1,5 @@
 import debounce from "../utils/debounce";
-import { reactive } from "vue";
+import { provide, reactive } from "vue";
 import defineReactivePlugin from "../utils/define-reactive-plugin";
 
 const SIZE_LIST = [ 'sm', 'md', 'lg', 'xl' ]
@@ -40,10 +40,8 @@ export default defineReactivePlugin({
     __update: noop(),
     __installed: false,
 
-    install(app, options) {
-        const { $bm } = options
+    install({ $bm }) {
         $bm.screen = this
-        app.config.globalProperties.$bm = reactive($bm)
         if (this.__installed === true) {
             if ($bm.config.screen !== void 0) {
                 if ($bm.config.screen.bodyClasses === false) {
