@@ -1,0 +1,103 @@
+.bm-chip {
+    vertical-align: middle;
+    border-radius: 16px;
+    outline: 0;
+    position: relative;
+    height: var(--bm-chip-height);
+    max-width: 100%;
+    margin: 4px;
+    background: #e0e0e0;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    padding: .5em .9em;
+}
+
+.bm-chip--colored .bm-chip__icon, .bm-chip--dark .bm-chip__icon {
+    color: inherit;
+}
+
+.bm-chip--outline {
+    background: transparent !important;
+    border: 1px solid currentColor;
+}
+
+.bm-chip .q-avatar {
+    font-size: var(--bm-chip-height);
+    margin-left: -.45em;
+    margin-right: .2em;
+    border-radius: 16px;
+}
+
+.bm-chip--selected .q-avatar {
+    display: none;
+}
+
+.bm-chip__icon {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.5em;
+    margin: -.2em;
+}
+
+.bm-chip__icon--left {
+    margin-right: .2em;
+}
+
+.bm-chip__icon--right {
+    margin-left: .2em;
+}
+
+.bm-chip__icon--remove {
+    margin-left: .1em;
+    margin-right: -.5em;
+    opacity: .6;
+    outline: 0;
+}
+
+.bm-chip__icon--remove:hover, .bm-chip__icon--remove:focus {
+    opacity: 1;
+}
+
+.bm-chip__content {
+    white-space: nowrap;
+}
+
+.bm-chip--dense {
+    border-radius: 12px;
+    padding: 0 .4em;
+    height: 1.5em;
+}
+
+.bm-chip--dense .q-avatar {
+    font-size: 1.5em;
+    margin-left: -.27em;
+    margin-right: .1em;
+    border-radius: 12px;
+}
+
+.bm-chip--dense .bm-chip__icon {
+    font-size: 1.25em;
+}
+
+.bm-chip--dense .bm-chip__icon--left {
+    margin-right: .195em;
+}
+
+.bm-chip--dense .bm-chip__icon--remove {
+    margin-right: -.25em;
+}
+
+.bm-chip--square {
+    border-radius: var(--bm-generic-border-radius);
+}
+
+.bm-chip--square .q-avatar {
+    border-radius: calc(var(--bm-generic-border-radius) - 1) 0 0 calc(var(--bm-generic-border-radius) - 1);
+}
+
+body.desktop .bm-chip--clickable:focus {
+    box-shadow: var(--bm-shadow-1);
+}
+
+body.desktop.body--dark .bm-chip--clickable:focus {
+    box-shadow: var(--bm-dark-shadow-1);
+}

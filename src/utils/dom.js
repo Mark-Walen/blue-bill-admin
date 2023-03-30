@@ -1,7 +1,7 @@
 import {useRouter} from "vue-router/dist/vue-router"
 import DynamicDialogWrapper from '../components/dialog/DynamicDialogWrapper.vue'
 import Screen from "../plugin/Screen"
-import Dialog from "../plugin/Dialog";
+import Dialog from "../plugin/Dialog"
 
 const _g = { routePathId: 0}
 

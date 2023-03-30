@@ -1,15 +1,15 @@
-import { createDialog } from '../utils/dialog'
+import { createDialog } from "@/utils/dialog"
 import { ElDialog } from "element-plus"
 import defineReactivePlugin from "../utils/define-reactive-plugin"
 
 export default defineReactivePlugin({}, {
     __installed: false,
     create: noop(),
-    install (app, options) {
+    install ({ $bm, parentApp}) {
+        $bm.dialog = createDialog(ElDialog, parentApp)
         if (this.__installed !== true) {
-            this.create = createDialog(ElDialog, app)
+            this.create = $bm.dialog
         }
-        this.__installed = true
     }
 })
 

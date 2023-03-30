@@ -1,6 +1,8 @@
 @import "base.css";
 @import "../../components/toolbar/BmToolbar.css";
 @import "../../components/card/BmCard.css";
+@import "@/components/chip/BmChip.css";
+@import "@/components/seperator/BmSeparator.css";
 @import "@/assets/css/d-din.css";
 
 html, body, #app {

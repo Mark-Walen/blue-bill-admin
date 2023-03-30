@@ -1,9 +1,13 @@
-import Dialog from "@/plugin/Dialog";
+import Dialog from "@/plugin/Dialog"
 import Screen from '@/plugin/Screen'
+import Dark from "@/plugin/Dark"
+import IconSet from "@/plugin/icon-set"
 
 const autoInstalledPlugins = [
   Screen,
-  Dialog
+  Dialog,
+  Dark,
+  IconSet
 ]
 
 function isObject (v) {

@@ -1,6 +1,6 @@
 import { h, computed } from 'vue'
-import {createComponent} from "../../utils/create";
-import {hSlot} from "../../utils/render";
+import {createComponent} from "@/utils/create";
+import {hSlot} from "@/utils/render";
 
 // import useDark, { useDarkProps } from '../../composables/private/use-dark.js'
 

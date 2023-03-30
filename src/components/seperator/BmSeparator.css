@@ -1,0 +1,42 @@
+.bm-separator {
+    border: 0;
+    background: var(--bm-separator-color);
+    margin: 0;
+    transition: background .3s, opacity .3s;
+    flex-shrink: 0;
+}
+
+.bm-separator--dark {
+    background: var(--bm-separator-dark-color);
+}
+
+.bm-separator--horizontal {
+    display: block;
+    height: 1px;
+}
+
+.bm-separator--horizontal-inset {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.bm-separator--horizontal-item-inset {
+    margin-left: 72px;
+    margin-right: 0;
+}
+
+.bm-separator--horizontal-item-thumbnail-inset {
+    margin-left: 116px;
+    margin-right: 0;
+}
+
+.bm-separator--vertical {
+    width: 1px;
+    height: auto;
+    align-self: stretch;
+}
+
+.bm-separator--vertical-inset {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

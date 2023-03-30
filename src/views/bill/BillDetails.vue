@@ -6,15 +6,15 @@
     <bm-card class="table-container">
       <el-table :data="billItemData" table-layout="auto">
         <el-table-column type="selection" width="55" />
-<!--        <el-table-column prop="id" label="ID" width="88" />-->
-        <el-table-column prop="name" width="184" label="商品名称" />
-        <el-table-column width="120" sortable label="金额（￥）">
+        <el-table-column prop="id" label="ID" width="88" />
+        <el-table-column prop="name" min-width="184" label="商品名称" />
+        <el-table-column min-width="120" sortable label="金额（￥）">
           <template #default="scope">{{ parseFloat(scope.row.money).toFixed(2) }}</template>
         </el-table-column>
-        <el-table-column prop="paymentTime" width="192" sortable label="交易时间" />
-        <el-table-column prop="payee" show-overflow-tooltip width="216" label="商户名称 / 收款方"/>
-        <el-table-column prop="memo" width="200" label="备注" />
-        <el-table-column fixed="right" label="操作" width="112" >
+        <el-table-column prop="paymentTime" min-width="192" sortable label="交易时间" />
+        <el-table-column prop="payee" show-overflow-tooltip min-width="216" label="商户名称 / 收款方"/>
+        <el-table-column prop="memo" min-width="200" label="备注" />
+        <el-table-column fixed="right" label="操作" min-width="112" >
           <template #default="scope">
             <el-row class="operation-group">
               <el-col :span="8"><el-button link type="primary" size="small" @click="showBillItem(scope.row.id)">详情</el-button></el-col>

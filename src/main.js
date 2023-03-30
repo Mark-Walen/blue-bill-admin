@@ -20,7 +20,9 @@ app.use(router).use(Bm, {
             bodyClasses: ['bluemonster']
         }
     },
-    screen: {}
+    dark: {
+        isActive: false
+    }
 }).use(i18n)
 app.component('SvgIcon', SvgIcon)
 app.mount('#app')

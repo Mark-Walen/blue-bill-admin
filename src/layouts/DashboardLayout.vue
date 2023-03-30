@@ -66,15 +66,15 @@
                 <template #dropdown>
                   <el-dropdown-menu>
                     <el-dropdown-item>
-                      <el-icon><svg-icon name="user"></svg-icon></el-icon>
+                      <svg-icon name="user"></svg-icon>
                       Account Center
                     </el-dropdown-item>
                     <el-dropdown-item>
-                      <el-icon><svg-icon name="gear-six"></svg-icon></el-icon>
+                      <svg-icon name="gear-six"></svg-icon>
                       Account Settings
                     </el-dropdown-item>
                     <el-dropdown-item divided>
-                      <el-icon><svg-icon name="sign-out"></svg-icon></el-icon>
+                      <svg-icon name="sign-out"></svg-icon>
                       Logout
                     </el-dropdown-item>
                   </el-dropdown-menu>
@@ -97,7 +97,7 @@
             </el-breadcrumb>
           </div>
         </el-header>
-        <el-main>
+        <el-main :style="{'--el-main-padding': !$bm.screen.gt.xs ?'0px': '24px'}">
           <router-view />
         </el-main>
       </el-container>

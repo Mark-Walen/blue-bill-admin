@@ -150,7 +150,6 @@ export default defineReactivePlugin({
             && document.body.classList.add('screen--xs')
         }
         start()
-        this.__installed = true
     }
 })
 
