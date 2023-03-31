@@ -8,7 +8,6 @@ export const useDarkProps = {
 }
 
 export default function (props, $bm) {
-  console.log($bm);
   // return isDark
   return computed(() => (
     props.dark === null

@@ -1,10 +1,10 @@
 <template>
   <bm-card class="detail-container">
     <bm-card class="content-toolbar">
-      <panel-filter></panel-filter>
+      <panel-filter :options="filterOptions" :alwaysExpanded="false"></panel-filter>
     </bm-card>
-    <bm-card class="table-container">
-      <el-table :data="billItemData" table-layout="auto">
+    <bm-card class="table-container w-full h-full">
+      <el-table :data="billItemData" table-layout="auto" :default-sort="{prop: 'paymentTime', order: 'descending'}">
         <el-table-column type="selection" width="55" />
         <el-table-column prop="id" label="ID" width="88" />
         <el-table-column prop="name" min-width="184" label="商品名称" />
@@ -84,6 +84,17 @@ export default defineComponent({
       },
     ]
     total.value = billItemData.value.length
+    const filterOptions = [{
+      field: 'ear_tag_search',
+      type: 'input',
+      label: '搜索',
+      placeholder: '搜索耳标'
+    }, {
+      field: 'shed_id',
+      type: 'input',
+      label: '牛舍号',
+      placeholder: '按牛舍号搜索'
+    }]
     const showBillItem = (id) => {
       console.log(id)
     }
@@ -118,7 +129,7 @@ export default defineComponent({
 
 <style lang="stylus" scoped>
 .bm-card.detail-container
-  padding 24px
+  padding 12px
   .content-toolbar
     margin-bottom 24px
   .table-container
