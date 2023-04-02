@@ -112,7 +112,7 @@ module.exports = {
     down: 'keyboard_arrow_down'
   },
   table: {
-    arrowUp: 'arrow_upward',
+    arrowUp: 'arrow-up',
     warning: 'warning',
     firstPage: 'first_page',
     prevPage: 'chevron_left',
@@ -120,7 +120,7 @@ module.exports = {
     lastPage: 'last_page'
   },
   tree: {
-    icon: 'play_arrow'
+    icon: 'play'
   },
   uploader: {
     done: 'done',

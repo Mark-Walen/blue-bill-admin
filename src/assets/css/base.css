@@ -1,3 +1,5 @@
+@import "bm-palette.css";
+
 :root {
     --bm-toolbar-min-height: 50px;
     --bm-toolbar-padding: 0 12px;
@@ -9,7 +11,7 @@
 }
 
 :root {
-    --bm-shadow-color: #000;
+    --bm-shadow-color: var(--bm-theme-color-10);
     --bm-shadow-transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
     --bm-inset-shadow: 0 7px 9px -7px rgba(var(--bm-shadow-color), .7) inset;
     --bm-inset-shadow-down: 0 -7px 9px -7px rgba(var(--bm-shadow-color), .7) inset;

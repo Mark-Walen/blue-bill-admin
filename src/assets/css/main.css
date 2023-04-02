@@ -89,7 +89,7 @@ html, body, #app {
 
 .template-item-icon {
   position: relative;
-  color: #000;
+  color: var(--bm-theme-color-10);
   width: 100%;
   height: 100%;
   background-color: #fff;

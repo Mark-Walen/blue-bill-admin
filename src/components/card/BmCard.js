@@ -1,14 +1,14 @@
-import { h, computed } from 'vue'
+import { h, computed, getCurrentInstance } from "vue";
 import {createComponent} from "@/utils/create";
 import {hSlot} from "@/utils/render";
 
-// import useDark, { useDarkProps } from '../../composables/private/use-dark.js'
+import useDark, { useDarkProps } from '@/composables/use-dark.js'
 
 export default createComponent({
     name: 'BmCard',
 
     props: {
-        // ...useDarkProps,
+        ...useDarkProps,
 
         tag: {
             type: String,
@@ -21,9 +21,8 @@ export default createComponent({
     },
 
     setup (props, { slots }) {
-        // const vm = getCurrentInstance()
-        // const isDark = useDark(props, vm.proxy.$q)
-        const isDark = false
+        const vm = getCurrentInstance()
+        const isDark = useDark(props, vm.proxy.$bm)
 
         const classes = computed(() =>
             'bm-card'

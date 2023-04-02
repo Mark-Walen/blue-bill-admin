@@ -7,7 +7,7 @@ const Plugin = defineReactivePlugin({
   iconMapFn: null,
   __icons: {}
 }, {
-  set (setObject, ssrContext) {
+  set (setObject) {
     const def = { ...setObject, rtl: setObject.rtl === true }
     def.set = Plugin.set
     Object.assign(Plugin.__icons, def)

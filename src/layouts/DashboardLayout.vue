@@ -51,7 +51,7 @@
         </el-menu>
       </el-aside>
       <el-container class="bm-content-container">
-        <el-header v-if="$bm.screen.gt.sm" height="96px">
+        <el-header v-if="$bm.screen.gt.sm" height="112px">
           <div class="bm-header">
             <span class="bm-header-trigger" @click="showMenu">
               <el-icon v-if="isCollapse" :size="20"><svg-icon name="menu-unfold" :size="20"></svg-icon></el-icon>
@@ -299,5 +299,9 @@ export default defineComponent({
   --el-button-hover-link-text-color: #fff
 
 .el-main
-  --el-main-padding: 24px;
+  &::-webkit-scrollbar
+    width 8px
+  &::-webkit-scrollbar-thumb
+    background-color var(--bm-theme-color-5)
+    border-radius 4px
 </style>

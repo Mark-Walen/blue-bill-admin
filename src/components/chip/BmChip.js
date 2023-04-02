@@ -138,8 +138,8 @@ export default createComponent({
       )
 
       hasLeftIcon.value === true && child.push(
-        h(QIcon, {
-          class: 'q-chip__icon q-chip__icon--left',
+        h(SvgIcon, {
+          class: 'bm-chip__icon bm-chip__icon--left',
           name: leftIcon.value
         })
       )
