@@ -1,10 +1,10 @@
 <template>
     <bm-card class="bm-filter-controller">
         <bm-card class="reset">
-            <el-button>重置</el-button>
+            <el-button class="filter-btn">重置</el-button>
         </bm-card>
         <bm-card class="done">
-            <el-button @click="done">完成</el-button>
+            <el-button color="var(--bm-theme-color-5)" class="filter-btn" @click="done">完成</el-button>
         </bm-card>
     </bm-card>
 </template>
@@ -43,6 +43,13 @@ export default defineComponent({
         margin 8px 8px
     .done
         margin-right 12px
+
+        .filter-btn
+            --el-button-hover-bg-color: var(--bm-theme-color-4) !important;
+
+.bm-filter-controller
+    --el-button-hover-text-color var(--bm-theme-color-5)
+    --el-button-hover-border-color var(--bm-theme-color-5)
 
 
 </style>
