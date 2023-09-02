@@ -3,7 +3,6 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import elementZhLocale from 'element-plus/lib/locale/lang/zh-CN'
 import i18n from "@/i18n";
 
 import './assets/css/main.css'
@@ -12,7 +11,7 @@ import Bm from './plugin/Bm'
 import 'virtual:svg-icons-register'
 import SvgIcon from "./components/icon/SvgIcon.vue";
 
-const app = createApp(App, {locale: elementZhLocale})
+const app = createApp(App)
 
 app.use(createPinia())
 app.use(router).use(Bm, {
