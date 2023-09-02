@@ -1,6 +1,6 @@
 import { createI18n } from "vue-i18n"
-import elementEnLocale from '/element-plus/lib/locale/lang/en' // element-ui lang导入Element的语言包 英文
-import elementZhLocale from '/element-plus/lib/locale/lang/zh-CN'// element-ui lang g导入Element的语言包 中文
+import elementEnLocale from 'element-plus/lib/locale/lang/en' // element-ui lang导入Element的语言包 英文
+import elementZhLocale from 'element-plus/lib/locale/lang/zh-CN'// element-ui lang g导入Element的语言包 中文
 import enLocale from './en'
 import zhLocale from './zh-cn'
 
