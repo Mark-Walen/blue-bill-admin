@@ -41,6 +41,6 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           # This is the branch where the docs are deployed to
-          repository-name: https://github.com/Mark-Walen/bill-system-admin
+          repository-name: Mark-Walen/bill-system-admin
           branch: pro_0.0
           folder: dist
