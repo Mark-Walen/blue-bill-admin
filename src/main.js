@@ -3,13 +3,13 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import i18n from "@/i18n";
+import i18n from "@/i18n"
 
 import './assets/css/main.css'
 import './style.css'
 import Bm from './plugin/Bm'
 import 'virtual:svg-icons-register'
-import SvgIcon from "./components/icon/SvgIcon.vue";
+import SvgIcon from "./components/icon/SvgIcon.vue"
 
 const app = createApp(App)
 

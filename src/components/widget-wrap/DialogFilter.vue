@@ -1,7 +1,4 @@
 <template>
-    <!--  <bm-card class="bm-filter-wrapper p-2">-->
-    <!--    -->
-    <!--  </bm-card>-->
     <bm-card class="bm-filter scrollbar p-2">
         <bm-card class="bm-filter-group">
             <bm-card class="bm-filter-group-title">快捷筛选</bm-card>
@@ -24,12 +21,15 @@
                 <el-input class="bm-filter-group-item" placeholder="最高金额" />
             </bm-card>
         </bm-card>
-        <bm-card class="bm-filter-group">
+        <bm-card class="bm-filter-group has-subgroup">
             <bm-card class="bm-filter-group-title">
                 <bm-card class="text">分类</bm-card>
-                <bm-card class="icon"></bm-card>
+                <bm-card class="icon" @click="toggleSubgroupHandler(groupExpanded)">
+                    <svg-icon v-if="!groupExpanded" name="caret-up" :width="24" :height="24"></svg-icon>
+                    <svg-icon v-else name="caret-down" :width="24" :height="24"></svg-icon>
+                </bm-card>
             </bm-card>
-            <bm-card class="bm-filter-group-items">
+            <bm-card class="bm-filter-group-items" v-if="!groupExpanded">
                 <bm-card class="bm-filter-sub-group">
                     <bm-card class="bm-filter-group-title">收入</bm-card>
                     <el-check-tag class="bm-filter-group-item" size="large">全部收入</el-check-tag>
@@ -56,13 +56,24 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import BmCard from "../card/BmCard";
 
 export default defineComponent({
     name: "DialogFilter",
     components: {
         BmCard
+    },
+    setup() {
+        const groupExpanded = ref(false)
+        const toggleSubgroupHandler = (value) => {
+          groupExpanded.value = !value
+        }
+
+        return {
+            groupExpanded,
+            toggleSubgroupHandler
+        }
     }
 });
 </script>
@@ -73,7 +84,8 @@ export default defineComponent({
 
 .bm-filter
     position: relative
-    max-height 432px
+    //max-height 432px
+    height 400px
     overflow-y scroll
 
 .scrollbar::-webkit-scrollbar-thumb:hover
@@ -87,6 +99,15 @@ export default defineComponent({
     line-height 24px
     font-weight bold
     letter-spacing 0.025em
+
+.bm-filter-group.has-subgroup
+    transition height linear 0.3s
+
+.bm-filter-group.has-subgroup .bm-filter-group-title
+    display flex
+    justify-content space-between
+    .icon
+        cursor pointer
 
 .bm-filter-group-items
     display flex

@@ -64,4 +64,26 @@
     --bm-dark-red-8: var(--bm-red-3);
     --bm-dark-red-9: var(--bm-red-2);
     --bm-dark-red-10: var(--bm-red-1);
+
+    --bm-dark-blue-1: #001A4D;
+    --bm-dark-blue-2: #052F78;
+    --bm-dark-blue-3: #134CA3;
+    --bm-dark-blue-4: #2971CF;
+    --bm-dark-blue-5: #469AFA;
+    --bm-dark-blue-6: #5AAAFB;
+    --bm-dark-blue-7: #7DC1FC;
+    --bm-dark-blue-8: #A1D5FD;
+    --bm-dark-blue-9: #C6E8FE;
+    --bm-dark-blue-10: #EAF8FF;
+
+    --bm-dark-arcoblue-1: #000D4D;
+    --bm-dark-arcoblue-2: #041B79;
+    --bm-dark-arcoblue-3: #0E32A6;
+    --bm-dark-arcoblue-4: #1D4DD2;
+    --bm-dark-arcoblue-5: #306FFF;
+    --bm-dark-arcoblue-6: #3C7EFF;
+    --bm-dark-arcoblue-7: #689FFF;
+    --bm-dark-arcoblue-8: #93BEFF;
+    --bm-dark-arcoblue-9: #BEDAFF;
+    --bm-dark-arcoblue-10: #EAF4FF;
 }

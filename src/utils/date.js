@@ -1,28 +1,36 @@
 import moment from "moment";
 
-const getLastNDays = (n, format, date) => {
+const getLastNDaysOrMonth = (n, format, unit, date) => {
     if (typeof date === "undefined" || date == null) {
-        date = moment()
+        date = moment();
     } else {
-        date = moment(date)
+        date = moment(date);
     }
-    const lastNDay = date.subtract(n, "days")
-    const days = []
+
+    if (unit === 'mm' || unit === 'MM' || unit === 'month' || unit === 'months') {
+        unit = 'months'
+    } else {
+        unit = 'days'
+    }
+    console.log(unit);
+
+    const lastNDayOrMonth = date.subtract(n, unit);
+    const dates = [];
     for (let i = 0; i < n; i++) {
-        days.push(lastNDay.add(1, 'days').format(format))
+        dates.push(lastNDayOrMonth.add(1, unit).format(format));
     }
-    return days
-}
+    console.log(dates);
+    return dates;
+};
 
 const getLastMonthDays = (format, date) => {
-    let today = new Date()
-    const lastMonthDate = moment(today).subtract(1, 'months')
-    const differ = moment(today).diff(lastMonthDate, 'days') + 1
-    console.log(differ, today, lastMonthDate)
-    return getLastNDays(differ, format, date)
-}
+    let today = moment();
+    const lastMonthDate = today.subtract(1, "months");
+    const differ = today.diff(lastMonthDate, "days") + 1;
+    return getLastNDaysOrMonth(differ, format, date, 'd');
+};
 
 export {
-    getLastNDays,
-    getLastMonthDays
-}
+    getLastNDaysOrMonth,
+    getLastMonthDays,
+};

@@ -11,11 +11,9 @@
             <bm-card v-else class="text-gray-600 fix-height">
                 暂无筛选条件
             </bm-card>
-            <el-button v-if="!alwaysExpanded" @click="showDialog" class="filter-controller"
-                       :style="{backgroundColor: expanded?'var(--bm-theme-color-5)': 'transparent', color: expanded ? 'var(--bm-gray-1)' : 'var(--bm-theme-color-6)'}">
-                筛选
-                <svg-icon :name="expanded?'funnel-simple-light':'funnel-simple'" :size="24"></svg-icon>
-            </el-button>
+            <bm-card title="筛选" @click="showDialog">
+                <svg-icon name="gfilter" :size="24"></svg-icon>
+            </bm-card>
         </bm-card>
         <bm-separator />
     </bm-card>

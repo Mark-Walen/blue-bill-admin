@@ -6,11 +6,12 @@
 import * as echarts from "echarts";
 import { ref, onMounted, onUnmounted, toRefs, reactive, watch } from "vue";
 import useBm from "@/composables/use-bm";
+import { getLastMonthDays, getLastNDaysOrMonth } from "@/utils/date";
 
 const echartsInstance = ref();
 const props = defineProps({
-    xAxisData: {
-        type: Array,
+    duration: {
+        type: Number,
         required: true
     },
     title: {
@@ -20,6 +21,35 @@ const props = defineProps({
         type: Object
     }
 });
+
+const getXAxisData = (duration) => {
+    let dates = []
+    if (typeof duration === "undefined" || duration == null) {
+        duration = 7
+    }
+
+    if (duration === 7 || duration === 30) {
+        dates = getLastNDaysOrMonth(duration, "MM-DD", "days")
+    } else if (duration === 12) {
+        dates = getLastNDaysOrMonth(duration, "MM", "months")
+    }
+    return dates
+}
+
+const getDataSlice = (arr, len) => {
+    const rawArr = Array.from(arr)
+    if (typeof arr === "undefined" || typeof len === "undefined" || arr == null || len <= 0)
+        return null;
+
+    if (len > rawArr.length)
+        len = rawArr.length
+    return arr.slice(0, len)
+}
+
+const incomeData = ref([0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+const outcomeData = ref([24.16, 32.30, 58.57, 1.38, 0, 39.10, 24.3, 16, 14.5, 27.86, 32, 26.5, 39.3, 17.6, 52.9])
+const dataLength = ref(props.duration || 7)
+const xAxisData = ref(getXAxisData(dataLength.value))
 const title = {
     textStyle: {
         fontSize: 20
@@ -59,7 +89,7 @@ const option = reactive({
         data: ["支出", "收入"]
     },
     xAxis: {
-        data: props.xAxisData
+        data: xAxisData.value
     },
     yAxis: {
         splitLine: {
@@ -72,7 +102,7 @@ const option = reactive({
     series: [
         {
             name: "支出",
-            data: [24.16, 32.30, 58.57, 1.38, 0, 39.10, 24.3, 16, 14.5, 27.86, 32, 26.5, 39.3, 17.6, 52.9],
+            data: getDataSlice(outcomeData.value, dataLength.value),
             type: "line",
             smooth: "0.1",
             color: "rgb(229, 53, 61)",
@@ -82,7 +112,7 @@ const option = reactive({
         },
         {
             name: "收入",
-            data: [0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            data: getDataSlice(incomeData.value, dataLength.value),
             type: "line",
             smooth: "0.1",
             color: "#41c662",
@@ -115,10 +145,27 @@ onUnmounted(() => {
     echartsInstance.value.dispose();
 });
 
+const updateSeriesData = (name) => {
+    if (typeof name === "undefined" || name == null) return null
+
+    if (name === "支出") {
+        return getDataSlice(outcomeData.value, dataLength.value)
+    } else if (name === "收入") {
+        return getDataSlice(incomeData.value, dataLength.value)
+    } else {
+        return null
+    }
+}
+
 watch(
-    () => props.xAxisData,
+    () => props.duration,
     (newVal, oldValue) => {
-        option.xAxis.data = newVal;
+        dataLength.value = newVal || 7;
+        option.xAxis.data = getXAxisData(dataLength.value);
+        console.log(option.xAxis.data);
+        option.series.forEach(series => {
+            series.data = updateSeriesData(series.name)
+        })
         echartsInstance.value.setOption(option)
     }
 );

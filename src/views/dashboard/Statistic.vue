@@ -9,9 +9,7 @@
                                 <!--                <ul class="tool-item-icon">-->
                                 <swiper
                                     :modules="modules"
-                                    :pagination="{
-                      clickable: true
-                  }"
+                                    :pagination="{ clickable: true }"
                                     :space-between="1"
                                     :spaceBetween="30"
                                     :loop="true"
@@ -22,7 +20,8 @@
                                              title="中国建设银行"
                                              :style="{backgroundColor: 'var(--bm-card-ccb-color)'}">
                                             <div class="item-head">
-                                                <div class="icon"><img :src="banksObj['01050000'].icon" alt="ccb" />
+                                                <div class="icon"><img :src="getBankIconUrl(banksObj['01050000'].icon)"
+                                                                       alt="ccb" />
                                                 </div>
                                                 <div class="title tracking-wider">{{ banksObj["01050000"].name }}</div>
                                                 <div class="operator">
@@ -146,7 +145,7 @@
                                                         :value="item.id" />
                                                 </el-select>
                                             </div>
-                                            <bill-statistic :x-axis-data="state.xAxisData" :title="{text: '支出详情'}"
+                                            <bill-statistic :duration="state.duration" :title="{text: '支出详情'}"
                                                             style="flex: 1 1 0"></bill-statistic>
                                         </div>
                                     </div>
@@ -169,35 +168,32 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import BillStatistic from "../../components/statistic/BillStatistic.vue";
 import { reactive, ref } from "vue";
-import { getLastNDays } from "@/utils/date";
-import banksObj from "@/assets/bankInfo/banks";
+import { getLastNDaysOrMonth } from "@/utils/date";
+import banksObj from "@/utils/bankInfo";
+import { getBankIconUrl } from "@/utils/bankInfo";
 
-const today = getLastNDays(1, "YYYY-MM-DD")[0];
+const today = getLastNDaysOrMonth(1, "YYYY-MM-DD")[0];
 const activeDateType = ref("近七天");
 const state = reactive({
-    xAxisData: getLastNDays(7, "MM-DD"),
+    duration: 7,
     dateTypeList: [
         {
-            id: 0,
-            duration: 7,
+            id: 7,
             name: "近七天"
         },
         {
-            id: 1,
-            duration: 30,
+            id: 30,
             name: "近一月"
         },
         {
-            id: 2,
-            duration: 12,
+            id: 12,
             name: "近一年"
         }
     ]
 });
 const statisticSelectChanged = (value) => {
-    let days = state.dateTypeList[value].duration
-    console.log(days);
-    state.xAxisData = getLastNDays(days, "MM-DD")
+    console.log(value);
+    state.duration = value
 };
 const load = () => {
     //

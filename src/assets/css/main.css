@@ -47,10 +47,16 @@ html, body, #app {
 }
 
 .text-caption {
-  font-size: .75rem;
+  font-size: .875rem;
   font-weight: 400;
   line-height: 1.25rem;
   letter-spacing: .03333em;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .space {
@@ -168,11 +174,11 @@ html, body, #app {
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: rgb(239, 239, 239);
+  background: var(--bm-dark-gray-9);
   border-radius: 2px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #40a0ff49;
+  background: var(--bm-dark-gray-4);
   border-radius: 10px;
 }

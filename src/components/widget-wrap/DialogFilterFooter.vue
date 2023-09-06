@@ -41,8 +41,14 @@ export default defineComponent({
     .reset
     .done
         margin 8px 8px
+    .reset
+        .filter-btn
+            --el-button-hover-text-color var(--bm-dark-red-4) !important
+            --el-button-hover-border-color var(--bm-dark-red-7) !important
+            --el-button-hover-bg-color var(--bm-dark-red-9) !important
+            --el-button-outline-color var(--bm-dark-red-5) !important
     .done
-        margin-right 12px
+        margin-right 16px
 
         .filter-btn
             --el-button-hover-bg-color: var(--bm-theme-color-4) !important;
