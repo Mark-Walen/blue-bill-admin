@@ -1,6 +1,6 @@
 import { createI18n } from "vue-i18n"
 import elementEnLocale from 'element-plus/lib/locale/lang/en'
-import elementZhLocale from 'element-plus/lib/locale/lang/zh-CN' // TODO FIX: zh-CN to zh-cn when upload
+import elementZhLocale from 'element-plus/lib/locale/lang/zh-cn' // TODO FIX: zh-CN to zh-cn when upload
 import enLocale from './en'
 import zhLocale from './zh-cn'
 
