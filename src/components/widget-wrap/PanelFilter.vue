@@ -1,18 +1,33 @@
 <template>
     <bm-card class="bm-panel-filter">
         <bm-card class="row justify-between items-center flex-nowrap panel-filter p-sm pl-md">
-            <bm-card v-if="selectedValues.length">
-                <bm-chip v-for="item in selectedValues" :key="item.field" dense removable
-                         @remove="onChipClick(item.field)"
-                         color="primary" text-color="white">
-                    {{ item.lable }}: {{ item.displayValue }}
-                </bm-chip>
+            <bm-card class="filter-group">
+                <bm-card class="filter-group-item" style="width: 8rem;">
+                    <el-select placeholder="商家 / 收款方">
+                        <el-option key="1" value="空空如也" />
+                    </el-select>
+                </bm-card>
+                <bm-card class="filter-group-item">
+                    <el-select placeholder="金额">
+                        <el-option key="1" value="空空如也" />
+                    </el-select>
+                </bm-card>
+                <bm-card class="filter-group-item" style="width: 7rem;">
+                    <el-select placeholder="交易时间">
+                        <el-option key="1" value="空空如也" />
+                    </el-select>
+                </bm-card>
             </bm-card>
-            <bm-card v-else class="text-gray-600 fix-height">
-                暂无筛选条件
-            </bm-card>
-            <bm-card title="筛选" @click="showDialog">
-                <svg-icon name="gfilter" :size="24"></svg-icon>
+            <bm-card class="operation">
+                <bm-card title="筛选" @click="showDialog" class="bm-btn">
+                    <svg-icon name="gfilter" :size="20"></svg-icon>
+                </bm-card>
+                <bm-card title="刷新" class="bm-btn">
+                    <svg-icon name="redo" :size="20"></svg-icon>
+                </bm-card>
+                <bm-card title="记一笔" class="bm-btn">
+                    <svg-icon name="plus" :size="20"></svg-icon>
+                </bm-card>
             </bm-card>
         </bm-card>
         <bm-separator />
@@ -22,7 +37,6 @@
 <script setup>
 import { markRaw, nextTick, onMounted, ref, toRefs, watch } from "vue";
 import BmCard from "../card/BmCard";
-import { BmChip } from "../chip/";
 import { BmSeparator } from "../seperator/";
 import { isNullOrUndefined } from "@/utils/util";
 import useBm from "@/composables/use-bm";
@@ -124,10 +138,25 @@ const onChipClick = (field) => {
     --el-button-hover-text-color: var(--bm-theme-color-5)
     --el-button-hover-border-color: var(--bm-theme-color-5)
 
+.filter-group
+    display flex
+    .filter-group-item
+        width 6rem
+        margin-right 0.5rem
+        --el-border-radius-base 1rem
+        --el-component-size 1.875rem
+
 .filter-btn
     --el-button-hover-bg-color: var(--bm-theme-color-4) !important;
 
 .fix-height
-    height 32px
+    height 2rem
     line-height 32px
+
+.operation
+    display flex
+    justify-content flex-start
+    height 100%
+    .bm-btn
+        margin-right 0.5rem
 </style>
