@@ -8,7 +8,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BillStatistic: typeof import('./components/statistic/BillStatistic.vue')['default']
+    BmAvatar: typeof import('./components/avatar/BmAvatar.vue')['default']
     BmBar: typeof import('./components/BmBar.vue')['default']
+    BmImage: typeof import('./components/img/BmImage.vue')['default']
     BmToolbarWithGoBack: typeof import('./components/toolbar/BmToolbarWithGoBack.vue')['default']
     DialogFilter: typeof import('./components/widget-wrap/DialogFilter.vue')['default']
     DialogFilterFooter: typeof import('./components/widget-wrap/DialogFilterFooter.vue')['default']

@@ -39,6 +39,7 @@ import en from "element-plus/dist/locale/en.mjs";
 import zhCn from "../../i18n/zh-cn";
 import PanelFilter from "../../components/widget-wrap/PanelFilter.vue";
 import CollapseTransition from "@/components/collapse-transition/collapse-transition";
+import useBm from "@/composables/use-bm";
 
 export default defineComponent({
     components: { CollapseTransition, PanelFilter, BmCard },
@@ -52,6 +53,7 @@ export default defineComponent({
         const currentRow = ref();
         const billDetailTableRef = ref(null);
         const detailContainerRef = ref(null);
+        const $bm = useBm()
 
         billItemData.value = [
             {
@@ -99,12 +101,20 @@ export default defineComponent({
             placeholder: "按牛舍号搜索"
         }];
 
-        onMounted(() => {
+        const getTableWidth = () => {
             clientHeight.value = `${document.documentElement.clientHeight}` //获取浏览器可视区域高度
-            tableMaxHeight.value = clientHeight.value - 96
-            window.onresize = function () {
-                clientHeight.value = `${document.documentElement.clientHeight}` //获取浏览器可视区域高度
+            console.log(clientHeight.value);
+            if ($bm.screen.gt.sm) {
+                tableMaxHeight.value = clientHeight.value - 168
+            } else {
                 tableMaxHeight.value = clientHeight.value - 96
+            }
+        }
+
+        onMounted(() => {
+            getTableWidth()
+            window.onresize = function () {
+                getTableWidth()
             }
         })
 

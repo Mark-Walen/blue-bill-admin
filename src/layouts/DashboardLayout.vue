@@ -9,11 +9,11 @@
                     class="bm-sider-menu"
                     style="--el-menu-base-level-padding: 1.75rem; --el-menu-level-padding: 1.75rem;--bm-separator-color: var(--bm-dark-gray-8);"
                 >
-                    <div class="logo" style="margin-top: 8px; color: var(--el-menu-text-color); font-size: 1.5rem; line-height: 2.5rem;">
-                        <svg-icon v-if="!isCollapse" name="logo-bmv-light_a" :width="216" :height="56"></svg-icon>
-                        <svg-icon v-else name="logo-bmv" :width="80" :height="56"></svg-icon>
+                    <div class="logo" style="padding: 8px 0;">
+                        <bm-image :src="isCollapse ? 'logo-bmv' : 'bm-logo-dark'"
+                                  loading="lazy"
+                                  style="height: 3rem; transform: translateX(16px);" />
                     </div>
-<!--                    <bm-separator />-->
                     <el-menu-item index="/workspace/dashboard">
                         <svg-icon name="dashboard" :size="24" color="inherit"></svg-icon>
                         <template #title><span>工作台</span></template>
@@ -58,23 +58,26 @@
                 </el-menu>
             </el-aside>
             <el-container class="bm-content-container">
-                <el-header v-if="$bm.screen.gt.sm" height="4.5rem">
+                <el-header v-if="$bm.screen.gt.sm" height="4rem">
                     <div class="bm-header">
                         <div class="header-index-left has-breadcrumb">
-                <span class="bm-header-trigger" @click="showMenu">
-                  <el-icon v-if="isCollapse" :size="20"><svg-icon name="menu-unfold" :size="20"></svg-icon></el-icon>
-                  <el-icon v-else :size="20"><svg-icon name="menu-fold" :size="20"></svg-icon></el-icon>
-                </span>
-                            <el-breadcrumb separator="/">
+                            <span class="bm-header-trigger" @click="showMenu">
+                                  <el-icon v-if="isCollapse" :size="20">
+                                      <svg-icon name="menu-unfold" :size="20"></svg-icon></el-icon>
+                                  <el-icon v-else :size="20">
+                                      <svg-icon name="menu-fold" :size="20"></svg-icon>
+                                  </el-icon>
+                            </span>
+                            <el-breadcrumb separator="/" style="line-height: 4rem; height: 100%">
                                 <el-breadcrumb-item v-for="(item, index) in breadList" :key="index"
                                                     :to="{path: item.path}">{{ item.meta.title }}
                                 </el-breadcrumb-item>
                             </el-breadcrumb>
                         </div>
-                        <div class="header-index-right header-index-light">
+                        <div class="header-index-right">
                             <el-dropdown class="header-index-action">
                                 <div class="header-index-avatar">
-                                    <el-avatar class="bm-avatar-sm" src="/img/default-user-avatar.png"/>
+                                    <bm-avatar class="bm-avatar-sm" :src="'default-user-avatar'" :size="28" />
                                     <span class="bm-avatar-username">Blue Monster</span>
                                 </div>
                                 <template #dropdown>
@@ -100,9 +103,7 @@
                                 placement="bottom"
                             >
                                 <el-badge is-dot :value="3" class="header-index-messagebox" @click="showMessageBox">
-                                    <el-icon size="18px">
-                                        <svg-icon name="chat-circle-dots"></svg-icon>
-                                    </el-icon>
+                                    <svg-icon name="chat-circle-dots" :size="28"></svg-icon>
                                 </el-badge>
                             </el-tooltip>
                         </div>
@@ -132,7 +133,7 @@ import { defineAsyncComponent, defineComponent, ref, watch } from "vue";
 import debounce from "../utils/debounce";
 import { useRoute } from "vue-router/dist/vue-router";
 import BmCard from "../components/card/BmCard";
-import { BmSeparator } from "@/components/seperator"
+import { BmSeparator } from "@/components/seperator";
 
 export default defineComponent({
     name: "DashboardLayout",
@@ -248,7 +249,7 @@ export default defineComponent({
 .bm-header
     display flex
     justify-content space-between
-    height 4.5rem
+    height 4rem
     padding 0
     box-shadow 0 1px 4px rgba(0, 21, 41, 0.08)
 
@@ -258,7 +259,7 @@ export default defineComponent({
 
         .bm-header-trigger
             height 100%
-            line-height: 6
+            line-height: 4rem
             vertical-align top
             padding 0 24px
             display inline-block
@@ -283,12 +284,13 @@ export default defineComponent({
 
 .header-index-messagebox
     margin-right 20px
-    padding-top 24px
-    padding-bottom 16px
+    padding-top 16px
+    padding-left 8px
 
 .el-badge.header-index-messagebox :deep(.el-badge__content.is-fixed)
     transform none
-    top 24px
+    top 20px
+    right 12px
 
 .header-index-avatar:hover, .header-index-messagebox:hover
     background rgba(0, 0, 0, 0.025)
@@ -301,7 +303,7 @@ export default defineComponent({
     vertical-align top
 
 .bm-avatar-username
-    line-height 40px
+    line-height 32px
 
 //background transparent
 

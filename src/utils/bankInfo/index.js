@@ -1,9 +1,5 @@
 import { banksObj } from "./banks";
 
-export const getBankIconUrl = (name) => {
-  return `/src/assets/bankIcons/${name}.png`
-};
-
 export const banks = {
   "SRCB": "深圳农村商业银行",
   "BGB": "广西北部湾银行",
