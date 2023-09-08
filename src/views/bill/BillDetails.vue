@@ -14,13 +14,14 @@
                       style="width: 100%;"
                       table-layout="auto">
                 <el-table-column type="selection" :width="48" />
-                <el-table-column prop="name" label="商品名称" width="96" />
-                <el-table-column prop="money" label="金额 ￥" max-width="128"/>
-                <el-table-column prop="payee" label="商家/收款方"
-
-                                 :show-overflow-tooltip="{ enterable: true, placement: 'top', showArrow: true, hideAfter: 200, popperOptions: { strategy: 'fixed' } }" />
-                <el-table-column prop="paymentTime" label="交易时间" :width="200"/>
-                <el-table-column prop="memo" label="备注"/>
+                <el-table-column prop="memo"
+                                 label="备注" 
+                                 :show-overflow-tooltip="overflowTooltip"/>
+                <el-table-column prop="money" sortable label="金额 ￥" max-width="128"/>
+                <el-table-column prop="payee"
+                                 label="商家/收款方"
+                                 :show-overflow-tooltip="overflowTooltip" />
+                <el-table-column prop="paymentTime" sortable label="交易时间" :width="200"/>
                 <template #empty>
                     <div class="flex items-center justify-center">
                         <el-empty description="还没有账单数据哦， 快来添加吧！" />
@@ -32,7 +33,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, onMounted, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import i18n from "../../i18n";
 import BmCard from "../../components/card/BmCard";
 import en from "element-plus/dist/locale/en.mjs";
@@ -53,7 +54,16 @@ export default defineComponent({
         const currentRow = ref();
         const billDetailTableRef = ref(null);
         const detailContainerRef = ref(null);
-        const $bm = useBm()
+        const $bm = useBm();
+        const oveflowTooltip = reactive({ 
+            enterable: true,
+            placement: 'top',
+            showArrow: true,
+            hideAfter: 200,
+            popperOptions: {
+                strategy: 'fixed'
+            }
+        })
 
         billItemData.value = [
             {
@@ -132,6 +142,7 @@ export default defineComponent({
             billDetailTableRef,
             detailContainerRef,
             tableMaxHeight,
+            oveflowTooltip,
             lang,
             locale,
             filterOptions,
