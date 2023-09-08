@@ -20,8 +20,8 @@
                                              title="中国建设银行"
                                              :style="{backgroundColor: 'var(--bm-card-ccb-color)'}">
                                             <div class="item-head">
-                                                <div class="icon"><img :src="getBankIconUrl(banksObj['01050000'].icon)"
-                                                                       alt="ccb" />
+                                                <div class="icon"><bm-image :src="banksObj['01050000'].icon"
+                                                                       alt="ccb" loading="lazy"/>
                                                 </div>
                                                 <div class="title tracking-wider">{{ banksObj["01050000"].name }}</div>
                                                 <div class="operator">
@@ -170,7 +170,6 @@ import BillStatistic from "../../components/statistic/BillStatistic.vue";
 import { reactive, ref } from "vue";
 import { getLastNDaysOrMonth } from "@/utils/date";
 import banksObj from "@/utils/bankInfo";
-import { getBankIconUrl } from "@/utils/bankInfo";
 
 const today = getLastNDaysOrMonth(1, "YYYY-MM-DD")[0];
 const activeDateType = ref("近七天");
