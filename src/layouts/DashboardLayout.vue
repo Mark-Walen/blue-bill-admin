@@ -1,7 +1,7 @@
 <template>
     <el-row>
         <el-container class="bm-container">
-            <el-aside :width="isCollapse?'5rem':'16rem'" class="bm-sider" v-if="$bm.screen.gt.sm">
+            <el-aside :width="isCollapse?'5rem':'14rem'" class="bm-sider" v-if="$bm.screen.gt.sm">
                 <el-menu
                     :collapse="isCollapse"
                     router
