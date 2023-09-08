@@ -47,7 +47,7 @@
                                              bill-type="creditCard"
                                              title="招商银行" :style="{backgroundColor: 'var(--bm-card-cmb-color)'}">
                                             <div class="item-head">
-                                                <div class="icon"><img :src="banksObj['03080000'].icon" alt="cmb" />
+                                                <div class="icon"><bm-image :src="banksObj['03080000'].icon" alt="cmb" loading="lazy" />
                                                 </div>
                                                 <div class="title tracking-wider">{{ banksObj["03080000"].name }}</div>
                                                 <div class="operator">
