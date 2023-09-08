@@ -1,0 +1,1 @@
+/* empty css             */import{E as n}from"./el-main.2d46cb68.js";import{_ as r,r as a,o as s,c,w as _,a as i,h as m}from"./index.90d6b2ab.js";const l={};function p(e,f){const o=a("router-view"),t=n;return s(),c(t,{style:m({"--el-main-padding":e.$bm.screen.gt.xs?"24px":"0px"})},{default:_(()=>[i(o)]),_:1},8,["style"])}const w=r(l,[["render",p]]);export{w as default};
