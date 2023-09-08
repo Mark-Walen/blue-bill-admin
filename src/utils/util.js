@@ -3,5 +3,5 @@ export const isNullOrUndefined = (value) => {
 }
 
 export const getImageUrl = (name) => {
-    return `${import.meta.env.BASE_URL}/img/${name}.png`
+    return `${import.meta.env.BASE_URL}img/${name}.png`
 };
