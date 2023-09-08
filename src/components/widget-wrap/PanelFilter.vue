@@ -159,4 +159,5 @@ const onChipClick = (field) => {
     height 100%
     .bm-btn
         margin-right 0.5rem
+        cursor pointer
 </style>
