@@ -7,6 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BillList: typeof import('./components/statistic/bill_list/BillList.vue')['default']
+    BillListItem: typeof import('./components/statistic/bill_list/BillListItem.vue')['default']
     BillStatistic: typeof import('./components/statistic/BillStatistic.vue')['default']
     BmAvatar: typeof import('./components/avatar/BmAvatar.vue')['default']
     BmBar: typeof import('./components/BmBar.vue')['default']

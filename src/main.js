@@ -6,6 +6,7 @@ import router from './router'
 import i18n from "@/i18n"
 
 import './assets/css/main.css'
+import './assets/css/iconfont.css'
 import './style.css'
 import Bm from './plugin/Bm'
 import 'virtual:svg-icons-register'
