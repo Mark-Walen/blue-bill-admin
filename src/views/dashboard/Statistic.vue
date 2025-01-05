@@ -157,9 +157,13 @@
                 <div class="tool-item-icon" title="3 月支出统计数据">
                   <div class="bm-watch-resize">
                     <div class="bill-list template-item-icon statistic-component"
-                         :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-6x4': $bm.screen.gt.xs}">
-                      <div class="bill-list-title sticky">2025.01</div>
+                         :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-6x4': $bm.screen.gt.xs}"
+                         :style="visible ? 'overflow-y: hidden':'overflow-y: scroll'">
+                      <div class="bill-list-title sticky" @click="toggleVisible">
+                        <div class="time-picker">2025.01</div>
+                      </div>
                       <bill-list />
+                      <month-filter-drawer :visible="visible"  @closed="visible=false"/>
                     </div>
                   </div>
                 </div>
@@ -180,13 +184,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import BillStatistic from "../../components/statistic/BillStatistic.vue";
-import { reactive, ref } from "vue";
+import { computed, defineAsyncComponent, reactive, ref } from "vue";
 import { getLastNDaysOrMonth } from "@/utils/date";
 import banksObj from "@/utils/bankInfo";
 import BillList from "@/components/statistic/bill_list/BillList.vue";
 
+const MonthFilterDrawer = defineAsyncComponent(() => import("@/components/statistic/bill_list_filter_drawer/MonthFilterDrawer.vue"));
 const today = getLastNDaysOrMonth(1, "YYYY-MM-DD")[0];
 const activeDateType = ref("近七天");
+const visible = ref(false);
 const state = reactive({
   duration: 7,
   dateTypeList: [
@@ -208,9 +214,21 @@ const statisticSelectChanged = (value) => {
   console.log(value);
   state.duration = value;
 };
+
+const toggleVisible = () => {
+  console.log("visible: ", visible.value);
+  visible.value = !visible.value;
+  console.log("visible: ", visible.value);
+};
 const load = () => {
   //
 };
+
+const years = computed({
+  get: () => {
+    Array.from({ length: currentYear.value - lastYear.value + 1 }, (_, index) => lastYear.value + index).reverse();
+  }
+});
 
 const modules = [Navigation, Pagination];
 </script>
@@ -394,7 +412,6 @@ const modules = [Navigation, Pagination];
 
 .bill-list
   justify-content flex-start
-  overflow-y scroll
   padding 0
   background-color: #f1f1f1;
   scrollbar-color: #888 #f1f1f1;
@@ -408,6 +425,12 @@ const modules = [Navigation, Pagination];
     top 0
     z-index 100
     background: #f1f1f1;
+
+  :deep(.el-overlay)
+    position absolute;
+
+    .bill-list-filter-drawer
+      --el-drawer-padding-primary 8px
 
 .bill-list::-webkit-scrollbar
   display none

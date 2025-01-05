@@ -36,8 +36,6 @@ const props = defineProps({
     default: false
   }
 })
-
-console.log(props.categoryLogo)
 </script>
 
 <template>
@@ -48,9 +46,9 @@ console.log(props.categoryLogo)
     </div>
     <div class="bill-item-detail flex flex-col justify-between">
       <div class="memo">{{ memo }}</div>
-      <div class="transaction-detail inline-flex">
-        <div class="from" title="交易账户">{{ account }}</div>
-        <div class="to" title="交易对象">{{ transition_object }}</div>
+      <div class="transaction-detail inline-flex" :title="account+' | '+transition_object">
+        <div class="from">{{ account }}</div>
+        <div class="to">{{ transition_object }}</div>
       </div>
       <div v-if="!lastOne" class="h-separator"></div>
     </div>

@@ -13,7 +13,7 @@ const props = defineProps({
           bills: [
             {
               category: ["穿搭", "clothing"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "淘宝",
               memo: "",
@@ -21,7 +21,7 @@ const props = defineProps({
             },
             {
               category: ["餐饮", "dining"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "和喜点下午茶·甜品·饮品·生日蛋糕（宝安店）",
               memo: "下午茶",
@@ -36,7 +36,7 @@ const props = defineProps({
           bills: [
             {
               category: ["穿搭", "clothing"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "淘宝",
               memo: "",
@@ -44,7 +44,7 @@ const props = defineProps({
             },
             {
               category: ["餐饮", "dining"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "和喜点下午茶·甜品·饮品·生日蛋糕（宝安店）",
               memo: "下午茶",
@@ -59,7 +59,7 @@ const props = defineProps({
           bills: [
             {
               category: ["穿搭", "clothing"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "淘宝",
               memo: "",
@@ -67,7 +67,7 @@ const props = defineProps({
             },
             {
               category: ["餐饮", "dining"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "和喜点下午茶·甜品·饮品·生日蛋糕（宝安店）",
               memo: "下午茶",
@@ -82,7 +82,7 @@ const props = defineProps({
           bills: [
             {
               category: ["穿搭", "clothing"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "淘宝",
               memo: "",
@@ -90,7 +90,7 @@ const props = defineProps({
             },
             {
               category: ["餐饮", "dining"],
-              account: "储蓄账户 (0000)",
+              account: "建设银行（8888）",
               time: "00:00",
               transition_object: "和喜点下午茶·甜品·饮品·生日蛋糕（宝安店）",
               memo: "下午茶",
