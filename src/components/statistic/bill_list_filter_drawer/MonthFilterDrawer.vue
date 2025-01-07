@@ -15,14 +15,26 @@
         </div>
         <el-button type="primary" @click="query">确认</el-button>
       </el-tab-pane>
-      <el-tab-pane label="自定义" name="user-defined-date">Config</el-tab-pane>
+      <el-tab-pane label="自定义" name="user-defined-date">
+        <div class="filter-group filter-radio">
+          <div class="filter-group__header">按时间</div>
+          <el-radio-group v-model="uRadio">
+            <el-radio-button v-for="(item, index) in radioOptions" :key="index" :label="item.label" :value="item.value" border/>
+          </el-radio-group>
+        </div>
+        <div class="filter-group filter-group__diy">
+          <div class="filter-group__header filter-group__diy_header">自定义</div>
+          <scroll-date-picker />
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </el-drawer>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, reactive, ref, defineAsyncComponent } from "vue";
 import { VueScrollPicker } from "vue-scroll-picker";
+import ScrollDatePicker from "@/components/scroll-date-picker/ScrollDatePicker.vue";
 
 const props = defineProps({
   visible: {
@@ -52,6 +64,29 @@ const lastYear = ref(1980)
 const currentMonth = ref(today.getMonth())
 const nowMonth = ref(today.getMonth())
 
+const uRadio=ref('undefined')
+const radioOptions = reactive([
+  {
+    "label": "上周",
+    "value": "lastWeek"
+  },
+  {
+    "label": "上月",
+    "value": "lastMonth"
+  },
+  {
+    "label": "近一年",
+    "value": "lastYear"
+  },
+  // lastest five year: 2021-2025
+  ...Array.from({ length: 5 }, (_, i) => {
+    const year = nowYear.value - i;
+    return {
+      "label": year.toString(),
+      "value": year.toString()
+    };
+  }),
+])
 const emits = defineEmits(['update:visible', 'closed', 'query']);
 const drawerVisible = computed({
   get: () => props.visible,
@@ -93,7 +128,7 @@ const handleTabClick = (tab, event) => {
   if (tab.props.name === 'month-picker') {
     drawerHeight.value = 224
   } else if (tab.props.name === 'user-defined-date') {
-    drawerHeight.value = "50%"
+    drawerHeight.value = "70%"
   }
 }
 const query = () => {
@@ -111,6 +146,28 @@ const query = () => {
   .el-button
     width 100%
 
-.month-group-picker
+  .filter-group
+    .el-radio-group
+      height 4rem
+    :deep(.el-radio-button)
+      margin-right 0.5rem
+      
+      .el-radio-button__original-radio
+        display none
+      
+      .el-radio-button__inner
+        width 4rem
+        height 1.5rem
+        line-height 0.4rem
+        border: 1px solid #666666
+        border-radius 0.25rem
+
+    :deep(.el-radio-button.is-active)
+      .el-radio-button__original-radio:not(:disabled)+.el-radio-button__inner
+        border-color #1677FF
+        background-color #EDF4FF
+        color #1677FF
+
+.month-group-picker, .date-group-picker
   display flex
 </style>
