@@ -1,7 +1,4 @@
 <script setup>
-
-import SvgIcon from "@/components/icon/SvgIcon.vue";
-
 const props = defineProps({
   categoryLogo: {
     type: String,
