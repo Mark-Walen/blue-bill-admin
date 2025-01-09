@@ -160,7 +160,7 @@
                          :class="{'item-size-4x4': !$bm.screen.gt.xs, 'item-size-6x4': $bm.screen.gt.xs}"
                          :style="visible ? 'overflow-y: hidden':'overflow-y: scroll'">
                       <div class="bill-list-title sticky" @click="toggleVisible">
-                        <div class="time-picker">2025.01</div>
+                        <div class="time-picker"><el-text>2025.01</el-text><i class="icon icon-font" :class="visible?'icon-show-less':'icon-show-more'"></i></div>
                       </div>
                       <bill-list />
                       <month-filter-drawer :visible="visible"  @closed="visible=false"/>
@@ -184,7 +184,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import BillStatistic from "../../components/statistic/BillStatistic.vue";
-import { computed, defineAsyncComponent, reactive, ref } from "vue";
+import { defineAsyncComponent, reactive, ref } from "vue";
 import { getLastNDaysOrMonth } from "@/utils/date";
 import banksObj from "@/utils/bankInfo";
 import BillList from "@/components/statistic/bill_list/BillList.vue";
@@ -211,24 +211,15 @@ const state = reactive({
   ]
 });
 const statisticSelectChanged = (value) => {
-  console.log(value);
   state.duration = value;
 };
 
 const toggleVisible = () => {
-  console.log("visible: ", visible.value);
   visible.value = !visible.value;
-  console.log("visible: ", visible.value);
 };
 const load = () => {
   //
 };
-
-const years = computed({
-  get: () => {
-    Array.from({ length: currentYear.value - lastYear.value + 1 }, (_, index) => lastYear.value + index).reverse();
-  }
-});
 
 const modules = [Navigation, Pagination];
 </script>
