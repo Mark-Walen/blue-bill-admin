@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3767823 */
-  src: url('@/assets/font/iconfont/iconfont.woff2?t=1735726488209') format('woff2'),
-       url('@/assets/font/iconfont/iconfont.woff?t=1735726488209') format('woff'),
-       url('@/assets/font/iconfont/iconfont.ttf?t=1735726488209') format('truetype'),
-       url('@/assets/font/iconfont/iconfont.svg?t=1735726488209#iconfont') format('svg');
+  src: url('@/assets/font/iconfont/iconfont.woff2?t=1736325503768') format('woff2'),
+       url('@/assets/font/iconfont/iconfont.woff?t=1736325503768') format('woff'),
+       url('@/assets/font/iconfont/iconfont.ttf?t=1736325503768') format('truetype'),
+       url('@/assets/font/iconfont/iconfont.svg?t=1736325503768#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,11 +14,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-bangong:before {
+.icon-show-more:before {
+  content: "\e663";
+}
+
+.icon-arrow-up:before {
+  content: "\e658";
+}
+
+.icon-arrow-left:before {
+  content: "\e659";
+}
+
+.icon-arrow-down:before {
+  content: "\e65a";
+}
+
+.icon-arrow-right:before {
+  content: "\e65b";
+}
+
+.icon-page-first:before {
+  content: "\e65c";
+}
+
+.icon-down-to-bottom:before {
+  content: "\e65d";
+}
+
+.icon-up-to-top:before {
+  content: "\e65e";
+}
+
+.icon-page-last:before {
+  content: "\e65f";
+}
+
+.icon-page-turning-left:before {
+  content: "\e660";
+}
+
+.icon-page-turning-right:before {
+  content: "\e661";
+}
+
+.icon-show-less:before {
+  content: "\e662";
+}
+
+.icon-ashbin:before {
+  content: "\e665";
+}
+
+.icon-work:before {
   content: "\e604";
 }
 
-.icon-caipiao:before {
+.icon-lottery:before {
   content: "\e605";
 }
 
