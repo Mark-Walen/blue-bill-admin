@@ -131,7 +131,6 @@ const getDateRange = (selectedValue) => {
       const year = parseInt(selectedValue, 10);
       const yearStart = moment(`${year}-01-01`);
       const yearEnd = (year === nowYear.value) ? moment() : moment(`${year}-12-31`);
-      console.log(yearEnd);
       
       return { from: yearStart.format(dateFmt), to: yearEnd.format(dateFmt) };
   }
