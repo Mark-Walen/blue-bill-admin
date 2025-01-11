@@ -586,7 +586,7 @@ big.js@^5.2.2:
   version "0.0.0"
   dependencies:
     autoprefixer "^10.4.13"
-    bill-system-admin "file:C:/Users/wangxianggui/AppData/Local/Yarn/Cache/v6/npm-bill-system-admin-0.0.0-0a926d54-4547-4818-8b05-7046d0ca1d81-1736225655537/node_modules/bill-system-admin"
+    bill-system-admin "file:C:/Users/wangxianggui/AppData/Local/Yarn/Cache/v6/npm-bill-system-admin-0.0.0-dc28a088-e175-4def-b0ac-0ed63655c7d8-1736487972282/node_modules/bill-system-admin"
     echarts "^5.4.0"
     element-plus "^2.9.2"
     moment "^2.29.4"
@@ -3678,6 +3678,11 @@ typedarray.prototype.slice@^1.0.3:
     math-intrinsics "^1.1.0"
     typed-array-buffer "^1.0.3"
     typed-array-byte-offset "^1.0.4"
+
+typescript@^5.7.3:
+  version "5.7.3"
+  resolved "https://registry.npmmirror.com/typescript/-/typescript-5.7.3.tgz#919b44a7dbb8583a9b856d162be24a54bf80073e"
+  integrity sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==
 
 ufo@^1.5.4:
   version "1.5.4"

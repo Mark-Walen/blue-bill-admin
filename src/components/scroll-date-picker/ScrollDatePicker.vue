@@ -70,19 +70,17 @@ const emits = defineEmits()
 
 // Helper function to get date array
 const getNow = () => moment().format(props.fmt)
-const getCurrentDate = (dateStr) => moment(dateStr, props.fmt).toObject()
-const getCurrent = (value) => {
-  const dateOption = value === "fromDate" ? fromDate : toDate
-  if (["开始时间", "结束时间"].includes(dateOption.value)) {
-    const date = getNow()
-    return getCurrentDate(date)
+const getCurrentDate = (dateStr, fmt) => {
+  let date = moment(dateStr, fmt)
+  if (!date.isValid()) {
+    date = moment()
   }
-  return getCurrentDate(dateOption.value)
+  return date.toObject()
 }
 
 // Define reactive state
 const uRadioDateRange = ref("fromDate");
-const cur = reactive(getCurrent(uRadioDateRange.value))
+const cur = reactive(getCurrentDate(uRadioDateRange.value, props.fmt))
 const scrollPickerUpdate = reactive({
   'years': false,
   'months': false,
@@ -190,8 +188,8 @@ watch([fromDate, toDate], (newValue) => {
   
   if (!scrollPickerUpdate.years || !scrollPickerUpdate.months || !scrollPickerUpdate.date) {
     cur.years = date.years
-    // cur.months = date.months
-    // cur.date = date.date
+    cur.months = date.months
+    cur.date = date.date
   }
 })
 
