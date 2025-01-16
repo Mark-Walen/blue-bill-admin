@@ -1,1 +1,0 @@
-import{B as e}from"./BmCard.f9fdc366.js";import{_ as n,d as r,r as s,o as a,c,w as p,R as m}from"./index.5ab09a52.js";const d=r({components:{BmCard:e},setup(){}});function _(f,o,u,i,l,x){const t=s("bm-card");return a(),c(t,null,{default:p(()=>o[0]||(o[0]=[m(" \u8D26\u6237\u5B89\u5168\u4E2D\u5FC3 ")])),_:1})}const $=n(d,[["render",_]]);export{$ as default};
