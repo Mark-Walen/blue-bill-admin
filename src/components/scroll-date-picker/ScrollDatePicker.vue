@@ -9,7 +9,7 @@
       <el-text type="warning" style="width: 100%; display: block; text-align: center;">最长可查找时间跨度一年的交易</el-text>
     </div>
     <div class="date-group-picker">
-      <vue-scroll-picker
+      <scroll-picker
         :options="year"
         v-model="cur.years"
         @update:modelValue="setCurrentYear"
@@ -25,7 +25,7 @@
         @click="(value, oldValue) => onMonthUpdate(value)"
         @wheel="onMonthUpdate"
         @cancel="onMonthUpdateCancel"/>
-      <vue-scroll-picker
+      <scroll-picker
         :options="days"
         v-model="cur.date"
         @update:modelValue="setCurrentDate"
@@ -38,6 +38,7 @@
 </template>
 
 <script lang="js" setup>
+import ScrollPicker from "@/components/scroll-picker/ScrollPicker.vue";
 import { VueScrollPicker } from "vue-scroll-picker";
 import moment from 'moment/moment';
 import { ref, computed, reactive, toRefs, watch } from "vue";
@@ -116,7 +117,7 @@ const onDateUpdateCancel = () => {
 }
 
 const setCurrentYear = (value) => {
-  console.log('year: ', value);
+  // console.log('year: ', value);
   if (!scrollPickerUpdate.years) return;
   const date = moment(cur).year(value)
   scrollPickerUpdate.years = false
@@ -124,7 +125,7 @@ const setCurrentYear = (value) => {
 }
 
 const setCurrentMonth = (value) => {
-  console.log('month: ', value);
+  // console.log('month: ', value);
   if (!scrollPickerUpdate.months) return;
   const date = moment(cur).month(value)
   scrollPickerUpdate.months = false
@@ -132,8 +133,7 @@ const setCurrentMonth = (value) => {
 }
 
 const setCurrentDate = (value) => {
-  console.log('date: ', value);
-  
+  // console.log('date: ', value);  
   if (!scrollPickerUpdate.date) return;
   const date = moment(cur).date(value)
   scrollPickerUpdate.date = false
@@ -141,7 +141,7 @@ const setCurrentDate = (value) => {
 }
 
 const setCurrent = (value) => {
-  const {years, months, date} = getCurrent(value)
+  const {years, months, date} = getCurrentDate(props[value], props.fmt)
   
   cur.years = years;
   cur.months = months;
