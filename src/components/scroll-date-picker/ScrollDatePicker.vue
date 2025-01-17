@@ -10,14 +10,14 @@
     </div>
     <div class="date-group-picker">
       <scroll-picker
-        :options="year"
+        :options="years"
         v-model="cur.years"
         @update:modelValue="setCurrentYear"
         @end="onYearUpdate"
         @click="(value, oldValue) => onYearUpdate(value)"
         @wheel="onYearUpdate"
         @cancel="onYearUpdateCancel"/>
-      <vue-scroll-picker
+      <scroll-picker
         :options="months"
         v-model="cur.months"
         @update:modelValue="setCurrentMonth"
@@ -38,8 +38,7 @@
 </template>
 
 <script lang="js" setup>
-import ScrollPicker from "@/components/scroll-picker/ScrollPicker.vue";
-import { VueScrollPicker } from "vue-scroll-picker";
+import ScrollPicker from "@/components/scroll-picker/scroll-picker";
 import moment from 'moment/moment';
 import { ref, computed, reactive, toRefs, watch } from "vue";
 
@@ -89,18 +88,17 @@ const scrollPickerUpdate = reactive({
 })
 
 const onYearUpdate = (value) => {
-  console.log('year update');
-  
+  // console.log('year update');  
   scrollPickerUpdate.years = true
 }
 
 const onMonthUpdate = (value) => {
-  console.log('month update');
+  // console.log('month update');
   scrollPickerUpdate.months = true
 }
 
 const onDateUpdate = (value) => {
-  console.log('date update');
+  // console.log('date update');
   scrollPickerUpdate.date = true
 }
 
@@ -116,40 +114,8 @@ const onDateUpdateCancel = () => {
   if (scrollPickerUpdate.date) scrollPickerUpdate.date = false
 }
 
-const setCurrentYear = (value) => {
-  // console.log('year: ', value);
-  if (!scrollPickerUpdate.years) return;
-  const date = moment(cur).year(value)
-  scrollPickerUpdate.years = false
-  emits(`update:${uRadioDateRange.value}`, date.format(props.fmt))
-}
-
-const setCurrentMonth = (value) => {
-  // console.log('month: ', value);
-  if (!scrollPickerUpdate.months) return;
-  const date = moment(cur).month(value)
-  scrollPickerUpdate.months = false
-  emits(`update:${uRadioDateRange.value}`, date.format(props.fmt))
-}
-
-const setCurrentDate = (value) => {
-  // console.log('date: ', value);  
-  if (!scrollPickerUpdate.date) return;
-  const date = moment(cur).date(value)
-  scrollPickerUpdate.date = false
-  emits(`update:${uRadioDateRange.value}`, date.format(props.fmt))
-}
-
-const setCurrent = (value) => {
-  const {years, months, date} = getCurrentDate(props[value], props.fmt)
-  
-  cur.years = years;
-  cur.months = months;
-  cur.date = date;
-}
-
 // Compute years, months, and days for the picker
-const year = computed(() => {
+const years = computed(() => {
   const today = moment().toObject()
   return Array.from({ length: today.years - props.lastYear + 1 }, (_, index) => ({
     name: `${props.lastYear + index} 年`,
@@ -172,7 +138,7 @@ const days = computed(() => {
   const today = moment().toObject()
   const length = (cur.years === today.years && cur.months === today.months)
     ? today.date
-    : moment(`${cur.years}-${cur.months + 1}`, 'YYYY-MM').daysInMonth();
+    : moment([cur.years, cur.months]).daysInMonth();
   return Array.from({ length }, (_, i) => ({
     name: `${i + 1} 日`,
     value: i + 1,
@@ -180,16 +146,77 @@ const days = computed(() => {
   }));
 });
 
-watch([fromDate, toDate], (newValue) => {
-  let date = moment(props[uRadioDateRange.value], props.fmt).toObject();
-  if (newValue[0] === "开始时间" && newValue[1] === "结束时间") {
-    date = moment().toObject()
+const setCurrentYear = (value) => {
+  // console.log('year: ', value);
+  if (!scrollPickerUpdate.years) return;
+  let date = moment(cur).year(value)
+  if (months.value.length <= cur.months) {
+    date.month(months.value.length-1)
   }
+  if(days.value.length < cur.date) {
+    date.date(days.value.length)
+  }
+  scrollPickerUpdate.years = false
+  emits(`update:${uRadioDateRange.value}`, date.format(props.fmt))
+}
+
+const setCurrentMonth = (value) => {
+  console.log('month: ', value);
+  if (!scrollPickerUpdate.months) return;
+  const date = moment(cur).month(value)
+  if(days.value.length < cur.date) {
+    date.date(days.value.length)
+  }
+  scrollPickerUpdate.months = false
+  emits(`update:${uRadioDateRange.value}`, date.format(props.fmt))
+}
+
+const setCurrentDate = (value) => {
+  // console.log('date: ', value);
+  if (!scrollPickerUpdate.date) return;
+  const date = moment(cur).date(value)
+  scrollPickerUpdate.date = false
+  emits(`update:${uRadioDateRange.value}`, date.format(props.fmt))
+}
+
+const setCurrent = (value) => {
+  let date = moment(props[value], props.fmt)
+  if (!date.isValid()) {
+    date = moment()
+    emits(`update:${value}`, date.format(props.fmt))
+  }
+  const {years, months, date:date_} = date.toObject()
   
-  if (!scrollPickerUpdate.years || !scrollPickerUpdate.months || !scrollPickerUpdate.date) {
-    cur.years = date.years
-    cur.months = date.months
-    cur.date = date.date
+  cur.years = years;
+  cur.months = months;
+  cur.date = date_;
+}
+
+watch(fromDate, (newValue) => {
+  let date = moment(newValue, props.fmt)
+  if (!date.isValid()) {
+    date = moment()
+  }
+  const {years, months, date:date_} = date.toObject()
+  
+  if ((!scrollPickerUpdate.years || !scrollPickerUpdate.months || !scrollPickerUpdate.date) && uRadioDateRange.value === "fromDate") {
+    cur.years = years
+    cur.months = months
+    cur.date = date_
+  }
+})
+
+watch(toDate, (newValue) => {
+  let date = moment(newValue, props.fmt)
+  if (!date.isValid()) {
+    date = moment()
+  }
+  const {years, months, date:date_} = date.toObject()
+  
+  if ((!scrollPickerUpdate.years || !scrollPickerUpdate.months || !scrollPickerUpdate.date) && uRadioDateRange.value === "toDate") {
+    cur.years = years
+    cur.months = months
+    cur.date = date_
   }
 })
 
