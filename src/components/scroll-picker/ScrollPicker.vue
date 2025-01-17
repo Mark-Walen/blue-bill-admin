@@ -170,10 +170,7 @@ const setRefItem = (el) => {
 const calculateBounds = () => {
     const rotatorTop = rotator.value.getBoundingClientRect().top;
     bounds.value = items.value
-        .map((item) => {
-            if (!isNullOrUndefined(item))
-                return getBoundingClientCenterY(item) - rotatorTop
-        })
+        .map((item) => getBoundingClientCenterY(item) - rotatorTop)
         .sort((a, b) => a - b);
     boundMin.value = Math.min(...bounds.value);
     boundMax.value = Math.max(...bounds.value);
@@ -236,7 +233,7 @@ const scrollTo = (scroll_, onComplete) => {
 };
 
 const emitModalValue = (value) => {
-    if (internalValue.value !== value) {
+    if (internalValue.value !== value) {        
         emits('update:modelValue', (internalValue.value = value));
     }
 };
@@ -245,7 +242,7 @@ const onAfterWheel = debounce((handler) => {
     handler();
 }, 200);
 
-const onWheel = (event) => {
+const onWheel = (event) => {   
     if (scroll.value >= scrollMin.value && event.deltaY < 0) return;
     if (scroll.value <= scrollMax.value && event.deltaY > 0) return;
     if (bounds.value.length === 1) return;
@@ -277,7 +274,7 @@ const onWheel = (event) => {
     });
 };
 
-const onStart = (event) => {
+const onStart = (event) => {    
     if (event.cancelable) {
         event.preventDefault();
     }
@@ -288,7 +285,7 @@ const onStart = (event) => {
     emits('start');
 };
 
-const onMove = (event) => {
+const onMove = (event) => {    
     if (!start.value) return;
     if (event.cancelable) {
         event.preventDefault();
@@ -336,8 +333,7 @@ const onCancel = (event) => {
     emits('cancel');
 };
 
-const onClick = (event) => {
-    
+const onClick = (event) => {    
     const { clientX: x, clientY: y } = getEventXY(event);
     const topRect = layerTop.value.getBoundingClientRect();
     const bottomRect = layerBottom.value.getBoundingClientRect();
@@ -419,7 +415,7 @@ watch(modelValue, (newVal) => {
     }
 })
 
-watch(options, (newVal) => {
+watch(options, (newVal) => {    
     internalOptions.value = normalizeOptions(newVal);
 
     let nextInternalIndex = internalOptions.value.findIndex((option) => option.value == modelValue.value);
@@ -427,20 +423,22 @@ watch(options, (newVal) => {
         nextInternalIndex = 0;
     }
     const nextInternalValue = internalOptions.value[nextInternalIndex]?.value ?? null;
-
-    calculateBounds();
-    scroll.value = findScrollByIndex(nextInternalIndex);
-    internalIndex.value = nextInternalIndex;
-    if (internalValue.value !== nextInternalValue) {
-        emits('update:modelValue', (internalValue.value = nextInternalValue));
-    }
+    
+    nextTick(() => {
+        calculateBounds()
+        scroll.value = findScrollByIndex(nextInternalIndex)
+        internalIndex.value = nextInternalIndex;
+        if (internalValue.value !== nextInternalValue) {
+            emits('update:modelValue', (internalValue.value = nextInternalValue))
+        }
+    })
 }, { deep: true })
 
 onBeforeUpdate(() => {
     items.value = []
 })
 
-onMounted(() => {
+onMounted(() => {    
     calculateBounds();
     scroll.value = findScrollByIndex(internalIndex.value);
     if (internalValue.value !== props.modelValue) {
