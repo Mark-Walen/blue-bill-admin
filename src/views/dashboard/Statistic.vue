@@ -163,7 +163,7 @@
                         <div class="time-picker"><el-text>2025.01</el-text><i class="icon icon-font" :class="visible?'icon-show-less':'icon-show-more'"></i></div>
                       </div>
                       <bill-list />
-                      <month-filter-drawer :visible="visible"  @closed="visible=false"/>
+                      <month-filter-drawer v-if="visible" :visible="visible"  @closed="visible=false"/>
                     </div>
                   </div>
                 </div>
