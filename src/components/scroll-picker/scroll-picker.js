@@ -280,7 +280,6 @@ export default defineComponent({
                 return this.scrollOffsetTop - this.boundMax
             }
             return this.scrollOffsetTop - this.boundMin
-
         },
         onWheel(event) {
             if (!isNullOrUndefined(this.scroll) && this.scroll >= this.scrollMin && event.deltaY < 0) { return }
